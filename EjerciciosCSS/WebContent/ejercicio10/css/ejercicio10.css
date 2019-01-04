@@ -1,0 +1,65 @@
+@charset "utf-8";
+
+body{
+	width: 80%;
+	margin: 0 auto;
+}
+
+/*Responsive Design*/
+
+@media (min-width: 1201px){
+	
+	header{
+		text-align: center;
+	}
+	
+	#lateral{
+		width: 33%;
+	}
+	
+	#principal{
+		width: 33%;
+	}
+	
+	#contenido{
+		width: 33%;
+	}
+}
+
+
+
+@media (min-width: 601px) and (max-width: 1200px){
+	
+	header{
+		text-align: center;
+	}
+	
+	#lateral{
+		float: left;
+		width: 25%;
+		padding: 0;
+		margin: 0;
+	}
+	
+	#principal{
+		float:left;
+		width: 75%;
+		padding: 0;
+		margin: 0;
+	}
+	
+	#contenido{
+		padding:0;
+	}
+	
+	#contenido li{
+		list-style: none;
+		width: 33%;
+		float: left;
+	}
+	
+}
+
+@media (max-width: 600px){
+	
+}

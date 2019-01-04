@@ -1,0 +1,34 @@
+@charset "utf-8";
+
+body{
+	width: 960px;
+	margin: 0 auto;
+}
+header{
+	text-align: center;
+}
+
+#lateral{
+	float: left;
+	width: 260px;
+	padding: 0;
+	margin: 0;
+}
+
+#principal{
+	float:left;
+	width: 700px;
+	padding: 0;
+	margin: 0;
+}
+
+#contenido{
+	padding:0;
+}
+
+#contenido li{
+	list-style: none;
+	width: 33%;
+	float: left;
+}
+

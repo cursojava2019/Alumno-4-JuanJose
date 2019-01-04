@@ -1,0 +1,30 @@
+@charset "utf-8";
+
+a{
+	color:red;
+}
+
+p{
+	color: #555;
+}
+
+#primero p{
+	color: #369;
+}
+
+#primero em{
+	background-color: #ffffcc;
+	color: blue;
+	font-style: italic;
+}
+
+em.especial{
+	color: yellow;
+	background-color: black;
+	font-style: italic;
+}
+
+#segundo p span{
+	font-weight: bold;
+}
+
