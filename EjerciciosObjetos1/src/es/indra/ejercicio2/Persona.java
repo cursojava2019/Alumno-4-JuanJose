@@ -60,6 +60,7 @@ public class Persona {
 				+ ", peso=" + this.peso + ", altura=" + this.altura + "]";
 	}
 
+	// genera dni con números aleatorios sin letra o buscarlo completo
 	protected void generaDni() {
 
 	}
