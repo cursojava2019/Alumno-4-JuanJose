@@ -4,11 +4,11 @@ import java.util.Scanner;
 
 public class Ejercicio1Main {
 
-	private static Scanner entrada;
+	private static Scanner ENTRADA;
 	private static Cuenta cuenta;
 
 	public static void inicializar() {
-		entrada = new Scanner(System.in);
+		ENTRADA = new Scanner(System.in);
 		cuenta = null;
 	}
 
@@ -24,8 +24,8 @@ public class Ejercicio1Main {
 			System.out.println("2. Añadir saldo.");
 			System.out.println("3. Retirar saldo.");
 			System.out.println("0. Salir.");
-			opcion = entrada.nextInt();
-			entrada.nextLine();
+			opcion = ENTRADA.nextInt();
+			ENTRADA.nextLine();
 
 			switch (opcion) {
 			case 1:
@@ -49,7 +49,7 @@ public class Ejercicio1Main {
 	private static void retirarSaldo() {
 		if (cuenta != null) {
 			System.out.println("Introduzca la cantidad que desee retirar:");
-			Double saldo = entrada.nextDouble();
+			Double saldo = ENTRADA.nextDouble();
 			cuenta.retirar(saldo);
 			System.out.println("El resultado de la operación es: " + cuenta.toString());
 		} else {
@@ -61,7 +61,7 @@ public class Ejercicio1Main {
 	private static void aniadirSaldo() {
 		if (cuenta != null) {
 			System.out.println("Introduzca la cantidad que desee añadir:");
-			Double saldo = entrada.nextDouble();
+			Double saldo = ENTRADA.nextDouble();
 			cuenta.ingresar(saldo);
 			System.out.println("El resultado de la operación es: " + cuenta.toString());
 		} else {
@@ -71,9 +71,9 @@ public class Ejercicio1Main {
 
 	private static void inicializarCuenta() {
 		System.out.println("Introduzca nombre del titular:");
-		String titular = entrada.nextLine();
+		String titular = ENTRADA.nextLine();
 		System.out.println("Introduzca la cantidad:");
-		double saldo = entrada.nextDouble();
+		double saldo = ENTRADA.nextDouble();
 		cuenta = new Cuenta(titular, saldo);
 		System.out.println("El resultado de la operación es: " + cuenta.toString());
 	}
