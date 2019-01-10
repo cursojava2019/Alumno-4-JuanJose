@@ -36,6 +36,7 @@ public class Persona {
 		this.altura = altura;
 	}
 
+	
 	public double calcularIMC() {
 		double imc;
 		imc = this.peso / (Math.pow(this.altura, 2));
