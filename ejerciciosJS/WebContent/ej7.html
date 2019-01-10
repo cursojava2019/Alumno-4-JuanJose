@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>ejercicio 7</title>
+</head>
+<body>
+	
+	<h1 id="saludo"></h1>
+	
+<script type="text/javascript">
+	var nombre = prompt("Escribe tu nombre");
+	
+	var saludo = document.getElementById('saludo');
+	
+	saludo.style.fontSize = '10px'
+	saludo.style.fontFamily = 'Comic Sans';
+	
+	var dia = new Date();
+	var hora = dia.getHours();
+	var parte = '';
+	if(hora>=7 && hora<13){
+		parte = 'Buenos días';
+	}else if(hora>=13 && hora<20){
+		parte = 'Buenas tardes';
+	}else{
+		parte = 'Buenas noches';
+	}
+	document.getElementById('saludo').innerHTML=parte+' '+nombre;
+	
+</script>
+</body>
+</html>
