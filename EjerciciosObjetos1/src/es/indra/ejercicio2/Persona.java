@@ -4,7 +4,7 @@ public class Persona {
 	protected String nombre;
 	protected Integer edad;
 	protected String dni;
-	protected char sexo;
+	protected Character sexo;
 	protected Float peso;
 	protected Float altura;
 
@@ -36,7 +36,6 @@ public class Persona {
 		this.altura = altura;
 	}
 
-	
 	public double calcularIMC() {
 		double imc;
 		imc = this.peso / (Math.pow(this.altura, 2));
