@@ -1,7 +1,7 @@
 package es.indra.ejercicio2;
 
 public class Persona {
-	protected String nombre;
+	protected String nombre1;
 	protected Integer edad;
 	protected String dni;
 	protected char sexo;
