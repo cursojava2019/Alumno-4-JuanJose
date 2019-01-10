@@ -18,7 +18,6 @@ public class Ejercicio1Main {
 
 		int opcion = 0;
 		do {
-			System.out.flush();
 			System.out.println("Introduzca la operación que desee realizar:");
 			System.out.println("1. Inicializar cuenta.");
 			System.out.println("2. Añadir saldo.");
