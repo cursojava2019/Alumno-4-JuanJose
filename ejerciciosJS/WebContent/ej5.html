@@ -3,47 +3,27 @@
 <head>
 <meta charset="utf-8">
 <title>ejercicio 5</title>
-<style>
-	
-	
-	
-</style>
 </head>
 <body>
 	
 	<form name="conversor">
 		<label for="euros">Euros</label>
-		<input type="number" name="euros" id="euros">
+		<input type="number" name="euros" id="euros" oninput="eurosPesetas(this.value)" onchange="eurosPesetas(this.value)">
 		<label for="pesetas">Pesetas</label>
-		<input type="number" name="pesetas" id="pesetas">
+		<input type="number" name="pesetas" id="pesetas" oninput="pesetasEuros(this.value)" onchange="pesetasEuros(this.value)">
 		
 		<input type="reset" value="Borrar">
-		<input type="submit" value="Cambiar" onClick="cambiarDivisa()">
 	</form>
 	
 	
 <script type="text/javascript">
 	
-	function cambiarDivisa(){
-		
-		var valorPeseta = 166.386;
-		
-		var euros = null;
-		var pesetas = null;
-		var total = null;
-		
-		euros = document.conversor.euros.value;
-		pesetas = document.conversor.pesetas.value;
-		
-		if(euros == null){
-			total = pesetas*100 / valorPeseta;
-			euros.value = total; 
-		}else if(pesetas == null){
-			total = euros*100 / valorPeseta;
-			euros.value = total;
-		}
-		
+	function eurosPesetas(valNum) {
+	  document.getElementById("pesetas").value=valNum*166.386;
+	}
 	
+	function pesetasEuros(valNum) {
+	  document.getElementById("euros").value=valNum/166.386;
 	}
 	
 </script>
