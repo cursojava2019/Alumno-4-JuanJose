@@ -16,7 +16,7 @@
 	<form>
 		<label>Capital de España:</label>
 		<input type="radio" name="espania" value="jaen">Jaén
-		<input type="radio" name="espania" value="madrid" checked>Madrid
+		<input type="radio" name="espania" value="madrid">Madrid
 		<input type="radio" name="espania" value="barcelona">Barcelona
 		<br>
 		
@@ -41,21 +41,37 @@
 		//obtener respuestas
 		var r1 = document.getElementsByName('espania');
 		
-		if(r1.checked == "madrid"){
-			alert("bien");
-		}else{
-			alert("mal");
-		}
-		
 		var correcta = 0;
-		/*
+		
 		for(var i=0; i<r1.length; i++){
-			if(r1[i].checked == "madrid"){
-				correcta++;
+			if(r1[i].checked){
+				if(r1[i].value == "madrid"){
+					correcta++;	
+				}
 			}
 		}
-		*/
 		
+		var r2 = document.getElementsByName('uk');
+						
+		for(var i=0; i<r2.length; i++){
+			if(r2[i].checked){
+				if(r2[i].value == "london"){
+					correcta++;	
+				}
+			}
+		}
+				
+		var r3 = document.getElementsByName('ganador');
+		
+		for(var i=0; i<r3.length; i++){
+			if(r3[i].checked){
+				if(r3[i].value == "realmadrid"){
+					correcta++;	
+				}
+			}
+		}
+		
+		alert("Has acertado "+correcta+" de 3");
 	}
 		
 </script>
