@@ -8,26 +8,36 @@
 	
 	<form>
 		<input type="text" id="cadena" placeholder="inserta una cadena">
-		<button value="leer" onclick="leeCadena()">
+		<button value="leer" onclick="leeCadena()"></button>
 	</form>
-
+	
+	
 
 <script type="text/javascript">
 	
 	function leeCadena(){
 		var cadena = document.getElementById('cadena').value;
-
-		var numPalabras = 0;
-
-
-		var resultado = cadena.split(" ");
-
-		//alert(resultado);	
-
-		document.write("Número de palabras:");
-		document.write("Primera palabra:");
-		document.write("Última palabra:");
+	
+		var arrayPalabras = cadena.split(" ");
 		
+		var numPalabras = arrayPalabras.length;
+		
+		var primera = arrayPalabras[0];
+				
+		var ultima = arrayPalabras[numPalabras-1];
+		
+		var inverso = arrayPalabras.reverse().join(' ');
+		
+		var az = arrayPalabras.sort().join(' ');
+		
+		var za = arrayPalabras.sort().reverse().join(' ');
+		
+		document.write('<p>Número de palabras: '+numPalabras+'</p>');
+		document.write('<p>Primera palabra: '+primera+'</p>');
+		document.write('<p>Última palabra: '+ultima+'</p>');
+		document.write('<p>Inversa: '+inverso+'</p>');
+		document.write('<p>De la A a la Z: '+az+'</p>');
+		document.write('<p>De la Z a la A: '+za+'</p>');
 	}
 	
 
