@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>ejercicio 15</title>
+</head>
+<body>
+	
+	<form >
+		<label for="nombre">Nombre</label>
+		<input type="text" name="nombre" id="nombre"><br>
+		<label for="email">Email</label>
+		<input type="email" name="email" id="email"><br>
+		<label for="pass">Contraseña</label>
+		<input type="password" name="pass" id="pass"><br>
+		<label for="comentarios">Comentarios</label>
+		<textarea name="comentarios"></textarea><br>
+		
+		<input type="submit" value="enviar" name="enviar" onclick="validar()">
+	</form>
+	
+<script type="text/javascript">
+	
+	function validar(){
+		
+		//obtenemos los campos
+		var nombre = document.getElementById('nombre').value;
+		var email = document.getElementById('email').value;
+		var pass = document.getElementById('pass').value;
+		//OBTENER CAMPO COMENTARIOS
+		var comentarios = document.getElementsByName('form.input[3]').value;
+		
+		alert(comentarios);
+		
+		//validar campos, nombre
+		if(nombre == ''){
+			alert('Debes introducir un nombre');
+		}
+		
+		if(email == ''){
+			alert('Debes introducir un email');
+		}
+		
+		if(comentarios == '' || comentarios.length>50){
+			alert('Debes introducir un comentario o que no exceda de 50');
+		}
+		
+	}
+	
+</script>
+</body>
+</html>
