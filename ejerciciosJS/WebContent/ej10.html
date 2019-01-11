@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>ejercicio 10</title>
+</head>
+<body>
+	
+	<p id="fecha"></p>
+	<p id="hora"></p>
+
+<script type="text/javascript">
+	
+	window.onload = fechaReal();
+		
+	function fechaReal(){
+		
+		//Obtener fecha actual
+		var d = new Date();
+		
+		var fecha = document.getElementById('fecha').innerHTML = "Fecha: "+d.getDate()+"/"+(d.getUTCMonth()+1)+"/"+d.getFullYear();
+		var hora = document.getElementById('hora').innerHTML = "Hora: " +d.getHours()+":"+d.getMinutes()+":"+d.getSeconds();
+		
+		setTimeout("fechaReal()",1000);
+	}
+		
+		
+		
+		
+		
+	
+	
+</script>
+</body>
+</html>

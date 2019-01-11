@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>ejercicio 12</title>
+<style>
+	button{
+		background-color: blue;
+		width: 100px;
+		height: 30px;
+	}
+</style>
+</head>
+<body>
+	
+	<form>
+		<label>Capital de España:</label>
+		<input type="radio" name="espania" value="jaen">Jaén
+		<input type="radio" name="espania" value="madrid" checked>Madrid
+		<input type="radio" name="espania" value="barcelona">Barcelona
+		<br>
+		
+		<label>Capital de UK:</label>
+		<input type="radio" name="uk" value="london">London
+		<input type="radio" name="uk" value="manchester">Manchester
+		<input type="radio" name="uk" value="liverpool">Liverpool
+		<br>
+		
+		<label>Ganador de la Champions:</label>
+		<input type="radio" name="ganador" value="realmadrid">Real Madrid
+		<input type="radio" name="ganador" value="milan">Milan
+		<input type="radio" name="ganador" value="psg">PSG
+		<br>
+		
+		<input type="submit" value="Comprobar respuestas" onclick="comprobar()">
+	</form>
+
+<script type="text/javascript">
+	
+	function comprobar(){
+		//obtener respuestas
+		var r1 = document.getElementsByName('espania');
+		
+		if(r1.checked == "madrid"){
+			alert("bien");
+		}else{
+			alert("mal");
+		}
+		
+		var correcta = 0;
+		/*
+		for(var i=0; i<r1.length; i++){
+			if(r1[i].checked == "madrid"){
+				correcta++;
+			}
+		}
+		*/
+		
+	}
+		
+</script>
+</body>
+</html>

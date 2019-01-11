@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>ejercicio 9</title>
+</head>
+<body>
+	
+	<p id="coordenadas"></p>
+
+<script type="text/javascript">
+	
+	window.onmousemove = function(){
+		
+		var x = window.event.clientX;
+		var y = window.event.clientY;
+		
+		var parrafo = document.getElementById('coordenadas').innerHTML = x+"X "+y+"Y";
+		
+	}
+	
+</script>
+</body>
+</html>
