@@ -6,8 +6,31 @@
 </head>
 <body>
 	
+	<form>
+		<input type="text" id="cadena" placeholder="inserta una cadena">
+		<button value="leer" onclick="leeCadena()">
+	</form>
 
+
+<script type="text/javascript">
+	
+	function leeCadena(){
+		var cadena = document.getElementById('cadena').value;
+
+		var numPalabras = 0;
+
+
+		var resultado = cadena.split(" ");
+
+		//alert(resultado);	
+
+		document.write("Número de palabras:");
+		document.write("Primera palabra:");
+		document.write("Última palabra:");
+		
+	}
 	
 
+</script>
 </body>
 </html>
