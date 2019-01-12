@@ -14,7 +14,7 @@
 		<label for="pass">Contraseña</label>
 		<input type="password" name="pass" id="pass"><br>
 		<label for="comentarios">Comentarios</label>
-		<textarea name="comentarios"></textarea><br>
+		<textarea id="comentarios"></textarea><br>
 		
 		<input type="submit" value="enviar" name="enviar" onclick="validar()">
 	</form>
@@ -28,9 +28,7 @@
 		var email = document.getElementById('email').value;
 		var pass = document.getElementById('pass').value;
 		//OBTENER CAMPO COMENTARIOS BIEN
-		var comentarios = document.getElementsByName('form.input[3]').value;
-		
-		alert(comentarios);
+		var comentarios = document.getElementById('comentarios').value;
 		
 		//validar campos, nombre
 		if(nombre == ''){
