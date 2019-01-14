@@ -1,19 +1,19 @@
 package es.indra.ejercicio2;
 
 public class Persona {
-	protected String nombre;
+	protected static Character HOMBRE = 'H', MUJER = 'M';
+
+	protected String nombre, dni;
 	protected Integer edad;
-	protected String dni;
 	protected Character sexo;
-	protected Float peso;
-	protected Float altura;
+	protected Float peso, altura;
 
 	// Constructores
 	public Persona() {
 		this.nombre = "";
 		this.edad = 0;
 		this.dni = "";
-		this.sexo = 'H';
+		this.sexo = HOMBRE;
 		this.peso = Float.valueOf(0);
 		this.altura = Float.valueOf(0);
 	}
@@ -21,7 +21,7 @@ public class Persona {
 	public Persona(String nombre, Integer edad, char sexo) {
 		this.nombre = nombre;
 		this.edad = edad;
-		this.sexo = sexo;
+		this.sexo = comprobarSexo(sexo);
 		this.dni = "";
 		this.peso = Float.valueOf(0);
 		this.altura = Float.valueOf(0);
@@ -30,15 +30,24 @@ public class Persona {
 	public Persona(String nombre, Integer edad, String dni, char sexo, Float peso, Float altura) {
 		this.nombre = nombre;
 		this.edad = edad;
-		this.dni = dni;
-		this.sexo = sexo;
+		this.dni = generaDni();
+		this.sexo = comprobarSexo(sexo);
 		this.peso = peso;
 		this.altura = altura;
 	}
 
-	public double calcularIMC() {
-		double imc;
-		imc = this.peso / (Math.pow(this.altura, 2));
+	// usar constantes
+	public int calcularIMC() {
+		int imc;
+		double resultadoImc;
+		resultadoImc = this.peso / (Math.pow(this.altura, 2));
+		if (resultadoImc < 20) {
+			imc = -1;
+		} else if (resultadoImc >= 20 && resultadoImc <= 25) {
+			imc = 0;
+		} else {
+			imc = 1;
+		}
 		return imc;
 	}
 
@@ -50,8 +59,14 @@ public class Persona {
 		}
 	}
 
-	protected void comprobarSexo() {
-
+	protected char comprobarSexo(char sexo) {
+		char letra;
+		if (this.sexo == HOMBRE || this.sexo == MUJER) {
+			letra = sexo;
+		} else {
+			letra = HOMBRE;
+		}
+		return letra;
 	}
 
 	@Override
@@ -61,8 +76,19 @@ public class Persona {
 	}
 
 	// genera dni con números aleatorios sin letra o buscarlo completo
-	protected void generaDni() {
+	protected String generaDni() {
+		String dni = "", letraDni = "", letras = "ABCDEHIJKFLQMNSOPRVWXYZ";
+		char letra;
+		int numero = 0;
+		for (int i = 0; i < 8; i++) {
+			numero = (int) (Math.random() * 8) + 1;
+			dni += Integer.toString(numero);
+		}
 
+		letra = letras.charAt((int) (Math.random() * 23) + 1);
+		letraDni = Character.toString(letra);
+		dni += letraDni;
+		return dni;
 	}
 
 	public String getNombre() {
@@ -86,7 +112,7 @@ public class Persona {
 	}
 
 	public void setSexo(char sexo) {
-		this.sexo = sexo;
+		this.sexo = comprobarSexo(sexo);
 	}
 
 	public Float getPeso() {
