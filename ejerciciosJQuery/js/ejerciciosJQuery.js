@@ -1,3 +1,7 @@
+/*
+	Ejercicios 1,2 y 3	
+*/
+
 	//EJERCICIO 1
 
 	$(document).ready(function(){
@@ -97,5 +101,49 @@
 
 	});
 
+	//EJERCICIO 3
+	$(document).ready(function(){
+		//3.1
+		var botonAddItems = "<button id='botonAddItems'>Añadir items</button>";
+		$("#myList").before(botonAddItems);
+		$("#botonAddItems").click(function(){
+			for(var i=0; i<5; i++){
+				var l = "<li>List item "+(i+8)+"</li>";
+				$("#myList li:last").after(l);
+			}
+		});
+
+		//3.2
+		var botonRemoveImpares = "<button id='botonRemoveImpares'>Borrar elementos impares</button>";
+		$("#myList").before(botonRemoveImpares);
+		$("#botonRemoveImpares").click(function(){
+			$("#myList li:even").remove();
+		});
+
+		//3.3
+		var botonElementosModule = "<button id='botonElementosModule'>Añadir elementos module</button>";
+		$(".module:last").before(botonElementosModule);
+		$("#botonElementosModule").click(function(){
+			var h2Module = "<h2>h2 añadido</h2>";
+			var pModule = "<p>párrafo añadido</p>";
+			$(".module:last").after(h2Module,pModule);
+		});
+
+		//3.4
+		var botonOpcionSelect = "<button id='botonOpcionSelect'>Añadir opción select</button>";
+		$("#specials").before(botonOpcionSelect);
+		$("#botonOpcionSelect").click(function(){
+			var opcion = "<option value='wednesday'>Wednesday</option>";
+			$("option[value='tuesday']").after(opcion);
+		});
+
+		//3.5
+		var botonNuevoModule = "<button id='botonNuevoModule'>Añadir nuevo div Module</button>";
+		$('.module:first').before(botonNuevoModule);
+		$('#botonNuevoModule').click(function(){
+			var nuevoDiv = "<div class='module'><p>Nuevo div module y nueva imagen</p><img src='images/bread.jpg'></div>";
+			$(".module:last").after(nuevoDiv);
+		});
 	
+	});
 	
