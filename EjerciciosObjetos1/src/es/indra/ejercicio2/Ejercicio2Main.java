@@ -9,7 +9,7 @@ public class Ejercicio2Main {
 	public static void inicializar() {
 
 		TECLADO = new Scanner(System.in);
-
+		
 	}
 
 	public static String calcularPeso(Persona p) {
@@ -30,6 +30,19 @@ public class Ejercicio2Main {
 		return result;
 
 	}
+	
+	public static String mayorEdad(Persona p) {
+		String result = "";
+		
+		boolean mayor = p.esMayorDeEdad();
+		
+		if(mayor) {
+			result = "es mayor de edad";
+		}else {
+			result = "es menor de edad";
+		}
+		return result;
+	}
 
 	public static void main(String[] args) {
 
@@ -44,25 +57,32 @@ public class Ejercicio2Main {
 		persona1.sexo = TECLADO.next().charAt(0);
 		System.out.println("Peso:");
 		persona1.peso = TECLADO.nextFloat();
+		TECLADO.nextLine();
 		System.out.println("Altura:");
 		persona1.altura = TECLADO.nextFloat();
+		TECLADO.nextLine();
 
 		Persona persona2 = new Persona("Juan", 26, 'H');
 
 		Persona persona3 = new Persona();
+		System.out.println("Nombre:");
 		persona3.setNombre(TECLADO.nextLine());
+		System.out.println("Edad:");
 		persona3.setEdad(TECLADO.nextInt());
+		System.out.println("Sexo:");
 		persona3.setSexo(TECLADO.next().charAt(0));
+		System.out.println("Peso:");
 		persona3.setAltura(TECLADO.nextFloat());
+		System.out.println("Altura:");
 		persona3.setPeso(TECLADO.nextFloat());
 
 		System.out.println("Peso Persona 1: " + calcularPeso(persona1));
 		System.out.println("Peso Persona 2: " + calcularPeso(persona2));
 		System.out.println("Peso Persona 3: " + calcularPeso(persona3));
 
-		System.out.println("Es mayor de edad la persona1: " + persona1.esMayorDeEdad());
-		System.out.println("Es mayor de edad la persona2: " + persona2.esMayorDeEdad());
-		System.out.println("Es mayor de edad la persona3: " + persona3.esMayorDeEdad());
+		System.out.println("Es mayor de edad la persona1: " + mayorEdad(persona1));
+		System.out.println("Es mayor de edad la persona2: " + mayorEdad(persona2));
+		System.out.println("Es mayor de edad la persona3: " + mayorEdad(persona3));
 
 		System.out.println(persona1.toString());
 		System.out.println(persona2.toString());
