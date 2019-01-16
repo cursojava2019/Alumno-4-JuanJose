@@ -9,7 +9,7 @@ public class Ejercicio2Main {
 	public static void inicializar() {
 
 		TECLADO = new Scanner(System.in);
-		
+
 	}
 
 	public static String calcularPeso(Persona p) {
@@ -30,15 +30,15 @@ public class Ejercicio2Main {
 		return result;
 
 	}
-	
+
 	public static String mayorEdad(Persona p) {
 		String result = "";
-		
+
 		boolean mayor = p.esMayorDeEdad();
-		
-		if(mayor) {
+
+		if (mayor) {
 			result = "es mayor de edad";
-		}else {
+		} else {
 			result = "es menor de edad";
 		}
 		return result;
@@ -47,33 +47,34 @@ public class Ejercicio2Main {
 	public static void main(String[] args) {
 
 		inicializar();
-
+		System.out.println("Introducir datos de la persona:");
 		Persona persona1 = new Persona();
-		System.out.println("Nombre:");
+		System.out.println("Introduzca nombre y pulse intro:");
 		persona1.nombre = TECLADO.nextLine();
-		System.out.println("Edad:");
+		System.out.println("Introduzca edad y pulse intro:");
 		persona1.edad = TECLADO.nextInt();
-		System.out.println("Sexo:");
+		System.out.println("Introduzca sexo y pulse intro:");
 		persona1.sexo = TECLADO.next().charAt(0);
-		System.out.println("Peso:");
+		System.out.println("Introduzca peso y pulse intro:");
 		persona1.peso = TECLADO.nextFloat();
 		TECLADO.nextLine();
-		System.out.println("Altura:");
+		System.out.println("Introduzca altura y pulse intro:");
 		persona1.altura = TECLADO.nextFloat();
 		TECLADO.nextLine();
 
 		Persona persona2 = new Persona("Juan", 26, 'H');
 
 		Persona persona3 = new Persona();
-		System.out.println("Nombre:");
+		System.out.println("Introducir datos de la persona:");
+		System.out.println("Introduzca nombre y pulse intro:");
 		persona3.setNombre(TECLADO.nextLine());
-		System.out.println("Edad:");
+		System.out.println("Introduzca edad y pulse intro:");
 		persona3.setEdad(TECLADO.nextInt());
-		System.out.println("Sexo:");
+		System.out.println("Introduzca sexo y pulse intro:");
 		persona3.setSexo(TECLADO.next().charAt(0));
-		System.out.println("Peso:");
+		System.out.println("Introduzca peso y pulse intro:");
 		persona3.setAltura(TECLADO.nextFloat());
-		System.out.println("Altura:");
+		System.out.println("Introduzca altura y pulse intro:");
 		persona3.setPeso(TECLADO.nextFloat());
 
 		System.out.println("Peso Persona 1: " + calcularPeso(persona1));
