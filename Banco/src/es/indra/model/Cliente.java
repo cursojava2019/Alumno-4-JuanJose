@@ -1,5 +1,7 @@
 package es.indra.model;
 
+import java.util.ArrayList;
+
 public class Cliente {
 
 	private String dni;
@@ -7,6 +9,7 @@ public class Cliente {
 	private String apellidos;
 	private String direccion;
 	private String telefono;
+	private ArrayList<Cuenta> cuentas = new ArrayList<Cuenta>();
 
 	public Cliente() {
 		super();
