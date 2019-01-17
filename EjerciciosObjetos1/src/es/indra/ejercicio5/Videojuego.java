@@ -1,16 +1,16 @@
 package es.indra.ejercicio5;
 
-public class Videojuego {
+public class Videojuego implements Entregable {
 
 	public static final Integer HORAS_ESTIMADAS_DEFECTO = 10;
 	public static final Boolean ENTREGADO_DEFECTO = false;
-	
+
 	private String titulo;
 	private Integer horasEstimadas;
 	private Boolean entregado;
 	private String genero;
 	private String compania;
-	
+
 	public Videojuego() {
 		super();
 		this.titulo = "";
@@ -39,7 +39,7 @@ public class Videojuego {
 	}
 
 	public String getTitulo() {
-		return titulo;
+		return this.titulo;
 	}
 
 	public void setTitulo(String titulo) {
@@ -47,7 +47,7 @@ public class Videojuego {
 	}
 
 	public Integer getHorasEstimadas() {
-		return horasEstimadas;
+		return this.horasEstimadas;
 	}
 
 	public void setHorasEstimadas(Integer horasEstimadas) {
@@ -55,7 +55,7 @@ public class Videojuego {
 	}
 
 	public String getGenero() {
-		return genero;
+		return this.genero;
 	}
 
 	public void setGenero(String genero) {
@@ -63,7 +63,7 @@ public class Videojuego {
 	}
 
 	public String getCompania() {
-		return compania;
+		return this.compania;
 	}
 
 	public void setCompania(String compania) {
@@ -72,16 +72,44 @@ public class Videojuego {
 
 	@Override
 	public String toString() {
-		return "Videojuego [titulo=" + titulo + ", horasEstimadas=" + horasEstimadas + ", entregado=" + entregado
-				+ ", genero=" + genero + ", compania=" + compania + "]";
+		return "Videojuego [titulo=" + this.titulo + ", horasEstimadas=" + this.horasEstimadas + ", entregado="
+				+ this.entregado + ", genero=" + this.genero + ", compania=" + this.compania + "]";
 	}
-	
-	
-	
-	
-	
-	
-	
-	
+
+	@Override
+	public void entregar() {
+		this.entregado = true;
+	}
+
+	@Override
+	public void devolver() {
+		this.entregado = false;
+
+	}
+
+	@Override
+	public Boolean isEntregado() {
+		return this.entregado;
+	}
+
+	@Override
+	public Integer compararObject(Object o) {
+		int num = 2;
+		if (o instanceof Videojuego) {
+			Videojuego aux = (Videojuego) o;
+			Integer numHoras = aux.getHorasEstimadas();
+			if (this.horasEstimadas == numHoras) {
+				num = 0;
+			} else if (this.horasEstimadas < numHoras) {
+				num = 1;
+			} else {
+				num = -1;
+			}
+
+		} else {
+			System.out.println("No es una serie");
+		}
+		return num;
+	}
 
 }
