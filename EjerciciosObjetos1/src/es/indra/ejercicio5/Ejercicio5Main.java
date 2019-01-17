@@ -43,25 +43,30 @@ public class Ejercicio5Main {
 		v2.devolver();
 		v3.entregar();
 
-		Integer numEntregadas = 0;
+		Integer seriesEntregadas = 0, juegosEntregados = 0;
 		// Contar series entregadas
+		System.out.println("Lista de series.");
 		for (Serie serie : series) {
 
-			if (serie.isEntregado()) {
-				numEntregadas++;
+			if (serie.isEntregado() == true) {
+				seriesEntregadas++;
 			}
 
-		}
-		System.out.println("" + numEntregadas);
+			System.out.println(serie.toString());
 
-		numEntregadas = 0;
+		}
+		System.out.println("Nº de series entregadas: " + seriesEntregadas);
+
+		System.out.println("Lista de videojuegos.");
 		for (Videojuego videojuego : videojuegos) {
 
 			if (videojuego.isEntregado()) {
-				numEntregadas++;
+				juegosEntregados++;
 			}
-
+			System.out.println(videojuego.toString());
 		}
+
+		System.out.println("Nº de juegos entregados: " + juegosEntregados);
 
 	}
 
