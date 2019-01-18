@@ -1,16 +1,16 @@
 package es.indra.ejercicio5;
 
-public class Serie {
-	
+public class Serie implements Entregable {
+
 	public static final Integer NUM_TEMPORADAS_DEFECTO = 3;
 	public static final Boolean ENTREGADO_DEFECTO = false;
-	
+
 	private String titulo;
 	private Integer numTemporadas;
 	private Boolean entregado;
 	private String genero;
 	private String creador;
-	
+
 	public Serie() {
 		this.titulo = "";
 		this.numTemporadas = NUM_TEMPORADAS_DEFECTO;
@@ -38,7 +38,7 @@ public class Serie {
 	}
 
 	public String getTitulo() {
-		return titulo;
+		return this.titulo;
 	}
 
 	public void setTitulo(String titulo) {
@@ -46,7 +46,7 @@ public class Serie {
 	}
 
 	public Integer getNumTemporadas() {
-		return numTemporadas;
+		return this.numTemporadas;
 	}
 
 	public void setNumTemporadas(Integer numTemporadas) {
@@ -54,7 +54,7 @@ public class Serie {
 	}
 
 	public String getGenero() {
-		return genero;
+		return this.genero;
 	}
 
 	public void setGenero(String genero) {
@@ -62,7 +62,7 @@ public class Serie {
 	}
 
 	public String getCreador() {
-		return creador;
+		return this.creador;
 	}
 
 	public void setCreador(String creador) {
@@ -71,14 +71,44 @@ public class Serie {
 
 	@Override
 	public String toString() {
-		return "Serie [titulo=" + titulo + ", numTemporadas=" + numTemporadas + ", entregado=" + entregado + ", genero="
-				+ genero + ", creador=" + creador + "]";
+		return "Serie [titulo=" + this.titulo + ", numTemporadas=" + this.numTemporadas + ", entregado="
+				+ this.entregado + ", genero=" + this.genero + ", creador=" + this.creador + "]";
 	}
-	
-	
-	
-	
-	
-	
+
+	@Override
+	public void entregar() {
+		this.entregado = true;
+	}
+
+	@Override
+	public void devolver() {
+		this.entregado = false;
+
+	}
+
+	@Override
+	public Boolean isEntregado() {
+		return this.entregado;
+	}
+
+	@Override
+	public Integer compararObject(Object o) {
+		int num = 2;
+		if (o instanceof Serie) {
+			Serie aux = (Serie) o;
+			Integer numTemp = aux.getNumTemporadas();
+			if (this.numTemporadas == numTemp) {
+				num = 0;
+			} else if (this.numTemporadas < numTemp) {
+				num = 1;
+			} else {
+				num = -1;
+			}
+
+		} else {
+			System.out.println("No es una serie");
+		}
+		return num;
+	}
 
 }
