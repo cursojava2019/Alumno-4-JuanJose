@@ -44,30 +44,52 @@ public class Ejercicio5Main {
 		v3.entregar();
 
 		Integer seriesEntregadas = 0, juegosEntregados = 0;
+		Integer maxTemporadas = 0;
+		String serieMasTemporadas = "";
 		// Contar series entregadas
-		System.out.println("Lista de series.");
 		for (Serie serie : series) {
 
+			
+			
+			if(serie.getNumTemporadas()> maxTemporadas) {
+				maxTemporadas = serie.getNumTemporadas();
+				serieMasTemporadas = serie.toString();
+			}
+			
 			if (serie.isEntregado() == true) {
 				seriesEntregadas++;
 			}
+			
+			
 
-			System.out.println(serie.toString());
 
 		}
-		System.out.println("Nº de series entregadas: " + seriesEntregadas);
+		
 
-		System.out.println("Lista de videojuegos.");
+		Integer maxHorasJuego = 0;
+		String juegoMasHoras = "";
+		
 		for (Videojuego videojuego : videojuegos) {
-
+			
+			if(videojuego.getHorasEstimadas() > maxHorasJuego) {
+				maxHorasJuego = videojuego.getHorasEstimadas();
+				juegoMasHoras = videojuego.toString();
+			}
+			
 			if (videojuego.isEntregado()) {
 				juegosEntregados++;
 			}
-			System.out.println(videojuego.toString());
+
 		}
-
+		
+		
+		System.out.println("Nº de series entregadas: " + seriesEntregadas);
+		System.out.println("Serie con más temporadas: "+serieMasTemporadas);
 		System.out.println("Nº de juegos entregados: " + juegosEntregados);
-
+		System.out.println("Videojuego con más horas estimadas: "+juegoMasHoras);
+		
+		//Comparar
+		
 	}
 
 }
