@@ -2,6 +2,9 @@ package es.indra.model.support;
 
 import java.util.List;
 
+import es.indra.model.Dao;
+import es.indra.model.DaoException;
+
 public abstract class Service<K, O> {
 
 	protected abstract Dao<K, O> getDao();
@@ -16,7 +19,7 @@ public abstract class Service<K, O> {
 
 	public void update(O entity) {
 		try {
-			getDao().update(entity);
+			getDao().create(entity);
 		} catch (DaoException e) {
 			System.out.println("Error al modificar en base de datos " + entity.getClass().getName());
 		}
@@ -35,16 +38,17 @@ public abstract class Service<K, O> {
 			O entidad = getDao().find(key);
 			return entidad;
 		} catch (DaoException e) {
-			System.out.println("Error al realizar la búsqueda");
+			System.out.println("Error Al realizar la busqueda ");
 			return null;
 		}
 	}
 
 	public List<O> findAll() {
 		try {
+
 			return getDao().findAll();
 		} catch (DaoException e) {
-			System.out.println("Error al buscar");
+			System.out.println("Error Al realizar la busqueda ");
 			return null;
 		}
 

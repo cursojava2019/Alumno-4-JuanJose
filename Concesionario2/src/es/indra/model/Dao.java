@@ -1,4 +1,4 @@
-package es.indra.model.support;
+package es.indra.model;
 
 import java.util.List;
 
@@ -13,4 +13,5 @@ public interface Dao<K, O> {
 	public O find(K key) throws DaoException;
 
 	public List<O> findAll() throws DaoException;
+
 }
