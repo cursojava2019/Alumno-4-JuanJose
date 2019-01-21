@@ -1,15 +1,15 @@
 package es.indra.model;
 
-import java.util.ArrayList;
+import java.io.Serializable;
 
-public class Cliente {
+public class Cliente implements Serializable {
 
 	private String dni;
 	private String nombre;
 	private String apellidos;
 	private String direccion;
 	private String telefono;
-	private ArrayList<Cuenta> cuentas = new ArrayList<Cuenta>();
+	// private ArrayList<Cuenta> cuentas = new ArrayList<Cuenta>();
 
 	public Cliente() {
 		super();

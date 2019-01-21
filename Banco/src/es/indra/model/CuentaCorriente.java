@@ -5,12 +5,15 @@ public class CuentaCorriente extends Cuenta {
 	public static Float INTERES = (float) 0.1;
 
 	public CuentaCorriente() {
-		// TODO Auto-generated constructor stub
+
 	}
 
-	public CuentaCorriente(String tipo, Float comision, Double saldo) {
-		super(tipo, comision, saldo);
-		// TODO Auto-generated constructor stub
+	public CuentaCorriente(String tipo, Float comision, Double saldo, Cliente cliente, Boolean bloqueada) {
+		super(tipo, comision, saldo, cliente, bloqueada);
+	}
+
+	public static Float getINTERES() {
+		return INTERES;
 	}
 
 	@Override
@@ -28,6 +31,11 @@ public class CuentaCorriente extends Cuenta {
 		} else {
 			return null;
 		}
+	}
+
+	@Override
+	public String toString() {
+		return "CuentaCorriente []";
 	}
 
 }

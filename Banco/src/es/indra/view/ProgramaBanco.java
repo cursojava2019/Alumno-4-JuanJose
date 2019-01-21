@@ -1,8 +1,8 @@
-package es.indra.controller;
+package es.indra.view;
 
 import java.util.Scanner;
 
-import es.indra.model.Banco;
+import es.indra.controller.Banco;
 import es.indra.model.Cliente;
 import es.indra.model.CuentaCorriente;
 import es.indra.model.CuentaVivienda;

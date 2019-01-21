@@ -5,12 +5,14 @@ public class CuentaVivienda extends Cuenta {
 	public static Float INTERES = (float) 0.1;
 
 	public CuentaVivienda() {
-		// TODO Auto-generated constructor stub
 	}
 
-	public CuentaVivienda(String tipo, Float comision, Double saldo) {
-		super(tipo, comision, saldo);
-		// TODO Auto-generated constructor stub
+	public CuentaVivienda(String tipo, Float comision, Double saldo, Cliente cliente, Boolean bloqueada) {
+		super(tipo, comision, saldo, cliente, bloqueada);
+	}
+
+	public static Float getINTERES() {
+		return INTERES;
 	}
 
 	@Override
@@ -25,6 +27,11 @@ public class CuentaVivienda extends Cuenta {
 	public Double sacarDinero(Double dinero) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public String toString() {
+		return "CuentaVivienda []";
 	}
 
 }
