@@ -4,9 +4,7 @@ import java.util.Scanner;
 
 import es.indra.controller.Banco;
 import es.indra.model.Cliente;
-import es.indra.model.CuentaCorriente;
-import es.indra.model.CuentaVivienda;
-import es.indra.model.FondoInversion;
+import es.indra.model.Cuenta;
 
 public class ProgramaBanco {
 
@@ -15,6 +13,9 @@ public class ProgramaBanco {
 	private static Banco banco = null;
 
 	public static void main(String[] args) {
+
+		ENTRADA = new Scanner(System.in);
+		banco = new Banco();
 
 		System.out.println("Bienvenido al Banco");
 		int opcion = 0;
@@ -37,26 +38,20 @@ public class ProgramaBanco {
 			case 2:
 				crearCuenta();
 				break;
-			case 3:
-				ingresarDinero();
-				break;
-			case 4:
-				sacarDinero();
-				break;
-			case 5:
-				revisionMensual();
-				break;
-			case 6:
-				estadoCuenta();
-				break;
+			/*
+			 * case 3: ingresarDinero(); break; case 4: sacarDinero(); break; case 5:
+			 * revisionMensual(); break; case 6: estadoCuenta(); break;
+			 */
 			case 0:
 				System.out.println("Fin del programa");
 			default:
 				break;
 			}
 		} while (opcion != 0);
+
 	}
 
+	// IT WORKS
 	public static void aniadirCliente() {
 		System.out.println("Introduzca los datos del cliente");
 		System.out.println("Introduzca el dni y pulse intro");
@@ -71,28 +66,27 @@ public class ProgramaBanco {
 		String telefono = ENTRADA.nextLine();
 		Cliente cliente = new Cliente(dni, nombre, apellidos, telefono, direccion);
 		System.out.println("Cliente introducido correctamente");
+
 	}
 
+	// Probar, no puede crear la cuenta
 	public static void crearCuenta() {
 		System.out.println("Introduzca los datos de la cuenta");
-		System.out.println("Introduzca el tipo de cuenta y pulse intro");
+		System.out.println("Introduzca el tipo de cuenta y pulse intro:");
 		String tipo = ENTRADA.nextLine();
-		System.out.println("Introduzca la comisión y pulse intro");
+		System.out.println("Introduzca la comisión y pulse intro:");
 		Float comision = ENTRADA.nextFloat();
 		ENTRADA.nextLine();
-		System.out.println("Introduzca el saldo y pulse intro");
+		System.out.println("Introduzca el saldo y pulse intro:");
 		Double saldo = ENTRADA.nextDouble();
 		ENTRADA.nextLine();
+		System.out.println("Introduzca el dni del cliente y pulse intro:");
+		String dni = ENTRADA.nextLine();
 
-		if (tipo == "CC") {
+		Cliente cliente = banco.obtenerCliente(dni);
 
-			CuentaCorriente cuentaC = new CuentaCorriente(tipo, comision, saldo);
-
-		} else if (tipo == "CV") {
-			CuentaVivienda cuentaV = new CuentaVivienda(tipo, comision, saldo);
-		} else if (tipo == "FI") {
-			FondoInversion fondoI = new FondoInversion(tipo, comision, saldo);
-		}
+		// no me lo instancia, error en clase Banco
+		Cuenta cuenta = new Cuenta(1, tipo, comision, saldo, cliente, false);
 	}
 
 	public static void ingresarDinero() {
@@ -100,12 +94,11 @@ public class ProgramaBanco {
 	}
 
 	public static void sacarDinero() {
-		// llamar método sacardinero
+		// llamar método sacardinero }
 	}
 
 	public static void revisionMensual() {
 		// llamar el método revisionMensual
-
 	}
 
 	public static void estadoCuenta() {

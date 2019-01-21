@@ -67,6 +67,14 @@ public abstract class Cuenta {
 		this.bloqueada = bloqueada;
 	}
 
+	public Long getCodigo() {
+		return this.codigo;
+	}
+
+	public void setCodigo(Long codigo) {
+		this.codigo = codigo;
+	}
+
 	@Override
 	public String toString() {
 		return "Cuenta [tipo=" + this.tipo + ", comision=" + this.comision + ", saldo=" + this.saldo + "]";
