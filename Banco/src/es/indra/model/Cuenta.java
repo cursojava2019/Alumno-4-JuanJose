@@ -1,6 +1,8 @@
 package es.indra.model;
 
-public class Cuenta {
+import java.io.Serializable;
+
+public class Cuenta implements Serializable {
 
 	public static Float COMISION_DEFECTO = (float) 0.6;
 	public static String CUENTA_CORRIENTE = "Cuenta corriente", CUENTA_VIVIENDA = "Cuenta vivienda",

@@ -1,5 +1,12 @@
 package es.indra.view;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.Scanner;
 
 import es.indra.controller.Banco;
@@ -12,10 +19,60 @@ public class ProgramaBanco {
 
 	private static Banco banco = null;
 
+	private static final String FICHERO_OPERACIONES = "banco.txt";
+
+	public static final String NOMBRE_FICHERO_BANCO = "banco.dat";
+
+	/*
+	 * Funcion que crea, lee y cierra el fichero donde se guardan las operaciones
+	 * del banco
+	 */
+
+	// No me funciona init() //VER EN CASA
+	public static void init() throws ClassNotFoundException, IOException {
+		ENTRADA = new Scanner(System.in);
+		File file = new File(NOMBRE_FICHERO_BANCO);
+		try {
+			FileInputStream fileInput = new FileInputStream(file);
+			ObjectInputStream objecInput = new ObjectInputStream(fileInput);
+			banco = (Banco) objecInput.readObject();
+			objecInput.close();
+
+		} catch (FileNotFoundException e) {
+			banco = new Banco();
+			System.out.println("El fichero de registros del Banco se inicializara desde cero al no encontrar fichero");
+		}
+
+	}
+
+	public static void fin() throws IOException {
+		File file = new File(NOMBRE_FICHERO_BANCO);
+		file.delete();
+		file.createNewFile();
+		FileOutputStream fileOut;
+		try {
+			fileOut = new FileOutputStream(file);
+
+			ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
+			objectOut.writeObject(banco);
+			objectOut.flush();
+			objectOut.close();
+		} catch (IOException e) {
+			System.out.println("Error guardando en disco. SE HA PERDIDO TODO");
+			e.printStackTrace();
+		}
+
+	}
+
 	public static void main(String[] args) {
 
-		ENTRADA = new Scanner(System.in);
-		banco = new Banco();
+		try {
+			init();
+		} catch (ClassNotFoundException | IOException e) {
+			System.out.println("Error al iniciar de disco. Inicializamos el banco");
+			banco = new Banco();
+			e.printStackTrace();
+		}
 
 		System.out.println("Bienvenido al Banco");
 		int opcion = 0;
@@ -217,7 +274,7 @@ public class ProgramaBanco {
 		}
 	}
 
-	// PROBAR
+	// IT WORKS
 	public static void estadoCuenta() {
 		// obtener codigo
 		System.out.println("Introduzca código de la cuenta");
