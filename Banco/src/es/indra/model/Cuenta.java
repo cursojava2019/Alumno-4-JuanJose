@@ -3,6 +3,7 @@ package es.indra.model;
 public abstract class Cuenta {
 
 	public static Float COMISION_DEFECTO = (float) 0.6;
+	public static String CUENTA_CORRIENTE = "cuentaCorriente", CUENTA_VIVIENDA = "cuentaVivienda", FONDO_INVERSION = "fondoInversion";
 
 	private Long codigo;
 	private String tipo;
@@ -16,11 +17,12 @@ public abstract class Cuenta {
 		this.comision = COMISION_DEFECTO;
 		this.cliente = new Cliente();
 		this.bloqueada = false;
+		this.tipo = CUENTA_CORRIENTE;
 	}
 
 	public Cuenta(String tipo, Float comision, Double saldo, Cliente cliente, Boolean bloqueada) {
 		super();
-		this.tipo = tipo;
+		this.tipo = comprobarTipo(tipo);
 		this.comision = comision;
 		this.saldo = saldo;
 		this.cliente = cliente;
@@ -32,7 +34,7 @@ public abstract class Cuenta {
 	}
 
 	public void setTipo(String tipo) {
-		this.tipo = tipo;
+		this.tipo = comprobarTipo(tipo);
 	}
 
 	public Float getComision() {
@@ -80,6 +82,14 @@ public abstract class Cuenta {
 		return "Cuenta [tipo=" + this.tipo + ", comision=" + this.comision + ", saldo=" + this.saldo + "]";
 	}
 
+	public String comprobarTipo(String tipo) {
+		if(tipo.equalsIgnoreCase(CUENTA_CORRIENTE) || tipo.equalsIgnoreCase(CUENTA_VIVIENDA) || tipo.equalsIgnoreCase(FONDO_INVERSION)) {
+			return tipo;
+		}else {
+			return CUENTA_CORRIENTE;
+		}
+	}
+	
 	public Double ingresarDinero(Double dinero) {
 		this.saldo = this.saldo + dinero;
 		return this.saldo;
