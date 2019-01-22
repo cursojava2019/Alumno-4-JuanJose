@@ -5,24 +5,15 @@ import java.util.TreeMap;
 
 import es.indra.model.Cliente;
 import es.indra.model.Cuenta;
-import es.indra.model.CuentaCorriente;
-import es.indra.model.CuentaVivienda;
-import es.indra.model.FondoInversion;
 
 public class Banco implements Serializable {
 
 	private TreeMap<String, Cliente> clientes;
 	private TreeMap<Long, Cuenta> cuentas;
-	private TreeMap<Long, CuentaCorriente> cuentasCorrientes;
-	private TreeMap<Long, CuentaVivienda> cuentasVivienda;
-	private TreeMap<Long, FondoInversion> fondosInversion;
 
 	public Banco() {
 		this.clientes = new TreeMap<String, Cliente>();
 		this.cuentas = new TreeMap<Long, Cuenta>();
-		this.cuentasCorrientes = new TreeMap<Long, CuentaCorriente>();
-		this.cuentasVivienda = new TreeMap<Long, CuentaVivienda>();
-		this.fondosInversion = new TreeMap<Long, FondoInversion>();
 	}
 
 	public TreeMap<String, Cliente> getClientes() {
@@ -33,44 +24,22 @@ public class Banco implements Serializable {
 		this.clientes = clientes;
 	}
 
-	public TreeMap<Long, CuentaCorriente> getCuentasCorrientes() {
-		return this.cuentasCorrientes;
+	public TreeMap<Long, Cuenta> getCuentas() {
+		return this.cuentas;
 	}
 
-	public void setCuentasCorrientes(TreeMap<Long, CuentaCorriente> cuentasCorrientes) {
-		this.cuentasCorrientes = cuentasCorrientes;
+	public void setCuentas(TreeMap<Long, Cuenta> cuentas) {
+		this.cuentas = cuentas;
 	}
 
-	public TreeMap<Long, CuentaVivienda> getCuentasVivienda() {
-		return this.cuentasVivienda;
-	}
-
-	public void setCuentasVivienda(TreeMap<Long, CuentaVivienda> cuentasVivienda) {
-		this.cuentasVivienda = cuentasVivienda;
-	}
-
-	public TreeMap<Long, FondoInversion> getFondosInversion() {
-		return this.fondosInversion;
-	}
-
-	public void setFondosInversion(TreeMap<Long, FondoInversion> fondosInversion) {
-		this.fondosInversion = fondosInversion;
-	}
+	/* -------------------------------------- */
 
 	public Cliente obtenerCliente(String dni) {
 		return this.clientes.get(dni);
 	}
 
-	public CuentaCorriente obtenerCuentaC(Long codigo) {
-		return this.cuentasCorrientes.get(codigo);
-	}
-
-	public CuentaVivienda obtenerCuentaV(Long codigo) {
-		return this.cuentasVivienda.get(codigo);
-	}
-
-	public FondoInversion obtenerFondosInversion(Long codigo) {
-		return this.fondosInversion.get(codigo);
+	public Cuenta obtenerCuenta(Long codigo) {
+		return this.cuentas.get(codigo);
 	}
 
 	public Boolean introducirCliente(Cliente c) {
@@ -78,29 +47,18 @@ public class Banco implements Serializable {
 		return true;
 	}
 
-	public Boolean crearCuentaC(CuentaCorriente c) {
-		this.cuentasCorrientes.put(c.getCodigo(), c);
+	public Boolean introducirCuenta(Cuenta c) {
+		this.cuentas.put(c.getCodigo(), c);
 		return true;
 	}
 
-	public Boolean crearCuentaV(CuentaVivienda c) {
-		this.cuentasVivienda.put(c.getCodigo(), c);
-		return true;
-	}
-
-	public Boolean crearFondoInversion(FondoInversion c) {
-		this.fondosInversion.put(c.getCodigo(), c);
-		return true;
-	}
-
-	// Controlar que tipo de cuenta es para crear una cuenta única
-	public Cuenta ingresar(String dni, Long codigo, Float cantidad) {
+	public Cuenta ingresar(String dni, Long codigo, Double dinero) {
 
 		Double s;
 		Cliente cliente = this.clientes.get(dni);
 		Cuenta cuentas = this.cuentas.get(codigo);
 		if (cliente != null && cuentas != null && cuentas.getCliente().equals(cliente)) {
-			s = cuentas.getSaldo() + cantidad;
+			s = cuentas.ingresarDinero(dinero);
 			cuentas.setSaldo(s);
 			return cuentas;
 		} else {
@@ -108,13 +66,27 @@ public class Banco implements Serializable {
 		}
 	}
 
-	public Cuenta sacarDinero(String dni, Long codigo, Float cantidad) {
-		Double s;
+	public Cuenta sacarDinero(String dni, Long codigo, Double dinero, String tipoCuenta) {
+		Double s = (double) 0.0;
 		Cliente cliente = this.clientes.get(dni);
 		Cuenta cuentas = this.cuentas.get(codigo);
-		if (cliente != null && cuentas != null && cuentas.getCliente().equals(cliente)
-				&& comprobarOperacion(codigo, cantidad, cuentas.getTipo())) {
-			s = cuentas.getSaldo() - cantidad;
+		if (cliente != null && cuentas != null && cuentas.getCliente().equals(cliente)) {
+
+			// controlar tipos de cuentas con sus restricciones
+			if (tipoCuenta.equalsIgnoreCase("Cuenta corriente")) {
+				if (cuentas.getSaldo() >= dinero) {
+					s = cuentas.sacarDinero(dinero);
+				}
+			} else if (tipoCuenta.equalsIgnoreCase("Cuenta vivienda")) {
+				System.out.println("No se puede sacar dinero de la Cuenta Vivienda");
+			} else if (tipoCuenta.equalsIgnoreCase("Fondo inversion")) {
+				Double limite = cuentas.getSaldo() + 500;
+				if (limite >= dinero) {
+					s = cuentas.sacarDinero(dinero);
+				} else {
+					cuentas.setBloqueada(true);
+				}
+			}
 			cuentas.setSaldo(s);
 			return cuentas;
 		} else {
@@ -122,40 +94,19 @@ public class Banco implements Serializable {
 		}
 	}
 
-	public Cuenta revisionMensual(String dni, Long codigo) {
+	public Cuenta revisionMensual(String dni, Long codigo, String tipoCuenta) {
 		Cliente cliente = this.clientes.get(dni);
 		Cuenta cuenta = this.cuentas.get(codigo);
 		if (cliente != null && cuenta != null && cuenta.getCliente().equals(cliente)) {
+
+			// si el tipo de cuenta es CuentaCorriente, no hay comisión
+			if (tipoCuenta.equalsIgnoreCase("cuenta vivienda")) {
+				cuenta.setComision((float) 0.0);
+			}
 			cuenta.revisionMensual();
 			return cuenta;
 		} else {
 			return null;
 		}
 	}
-
-	public Boolean comprobarOperacion(Long codigo, Float cantidad, String tipocuenta) {
-		boolean aux = true;
-		Cuenta cuenta = this.cuentas.get(codigo);
-		if (tipocuenta.equalsIgnoreCase("CC")) {
-
-			if ((cuenta.getSaldo() - cantidad) < 0) {
-				System.out.println("Saldo negativo. No es posible realizarla");
-				aux = false;
-			}
-		}
-
-		if (tipocuenta.equalsIgnoreCase("CV")) {
-			System.out.println("No es posible sacar dinero");
-			aux = false;
-		}
-
-		if (tipocuenta.equalsIgnoreCase("FI")) {
-			if ((cuenta.getSaldo() - cantidad) < -500) {
-				System.out.println("Excedes el valor limite");
-				aux = false;
-			}
-		}
-		return aux;
-	}
-
 }

@@ -9,7 +9,6 @@ public class Cliente implements Serializable {
 	private String apellidos;
 	private String direccion;
 	private String telefono;
-	// private ArrayList<Cuenta> cuentas = new ArrayList<Cuenta>();
 
 	public Cliente() {
 		super();

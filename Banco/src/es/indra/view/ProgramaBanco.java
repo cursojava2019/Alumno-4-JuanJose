@@ -38,10 +38,18 @@ public class ProgramaBanco {
 			case 2:
 				crearCuenta();
 				break;
-			/*
-			 * case 3: ingresarDinero(); break; case 4: sacarDinero(); break; case 5:
-			 * revisionMensual(); break; case 6: estadoCuenta(); break;
-			 */
+			case 3:
+				ingresarDinero();
+				break;
+			case 4:
+				sacarDinero();
+				break;
+			case 5:
+				revisionMensual();
+				break;
+			case 6:
+				estadoCuenta();
+				break;
 			case 0:
 				System.out.println("Fin del programa");
 			default:
@@ -64,14 +72,21 @@ public class ProgramaBanco {
 		String direccion = ENTRADA.nextLine();
 		System.out.println("Introduzca el teléfono y pulse intro");
 		String telefono = ENTRADA.nextLine();
+
 		Cliente cliente = new Cliente(dni, nombre, apellidos, telefono, direccion);
+
+		banco.introducirCliente(cliente);
+
 		System.out.println("Cliente introducido correctamente");
 
 	}
 
-	// Probar, no puede crear la cuenta
+	// IT WORKS
 	public static void crearCuenta() {
 		System.out.println("Introduzca los datos de la cuenta");
+		System.out.println("Introduzca el código de la cuenta y pulse intro:");
+		Long codigo = ENTRADA.nextLong();
+		ENTRADA.nextLine();
 		System.out.println("Introduzca el tipo de cuenta y pulse intro:");
 		String tipo = ENTRADA.nextLine();
 		System.out.println("Introduzca la comisión y pulse intro:");
@@ -85,24 +100,138 @@ public class ProgramaBanco {
 
 		Cliente cliente = banco.obtenerCliente(dni);
 
-		// no me lo instancia, error en clase Banco
-		Cuenta cuenta = new Cuenta(1, tipo, comision, saldo, cliente, false);
+		Cuenta cuenta = new Cuenta(codigo, tipo, comision, saldo, cliente, false);
+
+		banco.introducirCuenta(cuenta);
+
+		System.out.println(
+				"Cuenta creada con éxito para el cliente: " + cliente.getNombre() + " " + cliente.getApellidos());
+
 	}
 
+	// IT WORKS
 	public static void ingresarDinero() {
+		// obtener dni
+		System.out.println("Introduzca dni del cliente");
+		String dni = ENTRADA.nextLine();
+
+		Cliente cliente = banco.obtenerCliente(dni);
+
+		if (cliente == null) {
+			System.out.println("Cliente no encontrado");
+			return;
+		}
+
+		// obtener codigo
+		System.out.println("Introduzca código de la cuenta");
+		Long codigo = ENTRADA.nextLong();
+		ENTRADA.nextLine();
+
+		Cuenta cuenta = banco.obtenerCuenta(codigo);
+
+		if (cuenta == null) {
+			System.out.println("Cuenta no encontrada");
+			return;
+		}
+
+		// obtener dinero
+		System.out.println("Dinero a ingresar:");
+		Double dinero = ENTRADA.nextDouble();
+		ENTRADA.nextLine();
+
 		// llamar método ingresardinero
+		Cuenta operacion = banco.ingresar(dni, codigo, dinero);
+
+		if (operacion != null) {
+			System.out.println("Ingreso realizado con éxito. Nuevo saldo: " + operacion.getSaldo());
+		}
 	}
 
+	// IT WORKS
 	public static void sacarDinero() {
-		// llamar método sacardinero }
+		// obtener dni
+		System.out.println("Introduzca dni del cliente");
+		String dni = ENTRADA.nextLine();
+
+		Cliente cliente = banco.obtenerCliente(dni);
+
+		if (cliente == null) {
+			System.out.println("Cliente no encontrado");
+			return;
+		}
+
+		// obtener codigo
+		System.out.println("Introduzca código de la cuenta");
+		Long codigo = ENTRADA.nextLong();
+		ENTRADA.nextLine();
+
+		Cuenta cuenta = banco.obtenerCuenta(codigo);
+
+		if (cuenta == null) {
+			System.out.println("Cuenta no encontrada");
+			return;
+		}
+
+		// obtener dinero
+		System.out.println("Dinero a retirar:");
+		Double dinero = ENTRADA.nextDouble();
+		ENTRADA.nextLine();
+
+		Cuenta operacion = banco.sacarDinero(dni, codigo, dinero, cuenta.getTipo());
+
+		if (operacion != null) {
+			System.out.println("Retirar dinero con éxito.: " + operacion.getSaldo());
+		}
 	}
 
+	// IT WORKS
 	public static void revisionMensual() {
+		// obtener dni
+		System.out.println("Introduzca dni del cliente");
+		String dni = ENTRADA.nextLine();
+
+		Cliente cliente = banco.obtenerCliente(dni);
+
+		if (cliente == null) {
+			System.out.println("Cliente no encontrado");
+			return;
+		}
+
+		// obtener codigo
+		System.out.println("Introduzca código de la cuenta");
+		Long codigo = ENTRADA.nextLong();
+		ENTRADA.nextLine();
+
+		Cuenta cuenta = banco.obtenerCuenta(codigo);
+
+		if (cuenta == null) {
+			System.out.println("Cuenta no encontrada");
+			return;
+		}
+
 		// llamar el método revisionMensual
+		Cuenta operacion = banco.revisionMensual(dni, codigo, cuenta.getTipo());
+
+		if (operacion != null) {
+			System.out.println("Revisión mensual. Salgo: " + operacion.getSaldo());
+		}
 	}
 
+	// PROBAR
 	public static void estadoCuenta() {
+		// obtener codigo
+		System.out.println("Introduzca código de la cuenta");
+		Long codigo = ENTRADA.nextLong();
+		ENTRADA.nextLine();
 
+		Cuenta cuenta = banco.obtenerCuenta(codigo);
+
+		if (cuenta == null) {
+			System.out.println("Cuenta no encontrada");
+			return;
+		} else {
+			System.out.println(cuenta.toString());
+		}
 	}
 
 }
