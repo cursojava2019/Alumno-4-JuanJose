@@ -1,12 +1,13 @@
-package es.indra.model;
+package es.indra.model.service;
 
+import es.indra.model.Dao;
+import es.indra.model.dao.CompradorDao;
 import es.indra.model.entities.Comprador;
-import es.indra.model.support.Dao;
 import es.indra.model.support.Service;
 
 public class CompradorService extends Service<String, Comprador> {
 
-	CompradorDao dao = null;
+	private CompradorDao dao = null;
 
 	@Override
 	protected Dao<String, Comprador> getDao() {

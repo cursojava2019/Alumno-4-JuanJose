@@ -1,6 +1,8 @@
 package es.indra.model.entities;
 
-public class Venta {
+import java.io.Serializable;
+
+public class Venta implements Serializable {
 
 	private Vehiculo vehiculo;
 	private Comprador comprador;
@@ -8,6 +10,7 @@ public class Venta {
 
 	public Venta() {
 		super();
+
 	}
 
 	public Venta(Vehiculo vehiculo, Comprador comprador, Double precioVenta) {

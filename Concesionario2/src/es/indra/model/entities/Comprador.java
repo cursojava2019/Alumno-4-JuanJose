@@ -2,29 +2,29 @@ package es.indra.model.entities;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Comprador implements Serializable {
-
 	private String dni;
 	private String nombre;
 	private String apellidos;
 	private String telefono;
 	private String direccion;
 	private String cp;
-	private ArrayList<Vehiculo> propiedades = new ArrayList<Vehiculo>();
+	private List<Vehiculo> propiedades = new ArrayList<Vehiculo>();;
 
 	public Comprador() {
 		super();
 	}
 
-	public Comprador(String dni, String nombre, String apellidos, String telefono, String direccion, String cp) {
+	public Comprador(String dni, String nombre, String apellidos, String telefono, String direccion, String cP) {
 		super();
 		this.dni = dni;
 		this.nombre = nombre;
 		this.apellidos = apellidos;
 		this.telefono = telefono;
 		this.direccion = direccion;
-		this.cp = cp;
+		this.cp = cP;
 	}
 
 	public String getDni() {
@@ -75,11 +75,11 @@ public class Comprador implements Serializable {
 		this.cp = cp;
 	}
 
-	public ArrayList<Vehiculo> getPropiedades() {
+	public List<Vehiculo> getPropiedades() {
 		return this.propiedades;
 	}
 
-	public void setPropiedades(ArrayList<Vehiculo> propiedades) {
+	public void setPropiedades(List<Vehiculo> propiedades) {
 		this.propiedades = propiedades;
 	}
 

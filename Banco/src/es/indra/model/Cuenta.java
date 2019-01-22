@@ -4,20 +4,27 @@ public abstract class Cuenta {
 
 	public static Float COMISION_DEFECTO = (float) 0.6;
 
+	private Long codigo;
 	private String tipo;
 	private Float comision;
 	private Double saldo;
+	private Cliente cliente;
+	private Boolean bloqueada;
 
 	public Cuenta() {
 		super();
 		this.comision = COMISION_DEFECTO;
+		this.cliente = new Cliente();
+		this.bloqueada = false;
 	}
 
-	public Cuenta(String tipo, Float comision, Double saldo) {
+	public Cuenta(String tipo, Float comision, Double saldo, Cliente cliente, Boolean bloqueada) {
 		super();
 		this.tipo = tipo;
 		this.comision = comision;
 		this.saldo = saldo;
+		this.cliente = cliente;
+		this.bloqueada = bloqueada;
 	}
 
 	public String getTipo() {
@@ -42,6 +49,30 @@ public abstract class Cuenta {
 
 	public void setSaldo(Double saldo) {
 		this.saldo = saldo;
+	}
+
+	public Cliente getCliente() {
+		return this.cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+
+	public Boolean getBloqueada() {
+		return this.bloqueada;
+	}
+
+	public void setBloqueada(Boolean bloqueada) {
+		this.bloqueada = bloqueada;
+	}
+
+	public Long getCodigo() {
+		return this.codigo;
+	}
+
+	public void setCodigo(Long codigo) {
+		this.codigo = codigo;
 	}
 
 	@Override

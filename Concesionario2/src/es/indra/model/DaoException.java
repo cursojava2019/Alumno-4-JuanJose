@@ -1,4 +1,4 @@
-package es.indra.model.support;
+package es.indra.model;
 
 public class DaoException extends Exception {
 

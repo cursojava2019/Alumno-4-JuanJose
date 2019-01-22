@@ -4,35 +4,41 @@ import java.io.Serializable;
 
 public class Vehiculo implements Serializable {
 
-	public static String COCHE = "coche", MOTO = "moto", CAMION = "camion";
+	public static String COCHE = "coche";
+	public static String MOTO = "moto";
+	public static String CAMION = "camion";
 
 	private Long codigo;
 	private String marca;
+	private String modelo;
 	private String tipo;
 	private Integer anio;
 	private Integer kilometraje;
 	private Boolean vendido;
 
-	private String validarTipoVehiculo(String s) {
-		if (s.equals(COCHE) || s.equals(MOTO) || s.equals(CAMION)) {
-			return s;
-		} else {
-			return COCHE;
-		}
-	}
-
 	public Vehiculo() {
 		super();
 	}
 
-	public Vehiculo(Long codigo, String marca, String tipo, Integer anio, Integer kilometraje, Boolean vendido) {
+	public Vehiculo(Long codigo, String marca, String modelo, String tipo, Integer anio, Integer kilometraje,
+			Boolean vendido) {
 		super();
 		this.codigo = codigo;
 		this.marca = marca;
-		this.tipo = tipo;
+		this.tipo = valideTipo(tipo);
 		this.anio = anio;
 		this.kilometraje = kilometraje;
 		this.vendido = vendido;
+		this.modelo = modelo;
+	}
+
+	private String valideTipo(String s) {
+		if (s.equals(CAMION) || s.equals(COCHE) || s.equals(MOTO)) {
+			return s;
+		} else {
+			return COCHE;
+		}
+
 	}
 
 	public Long getCodigo() {
@@ -56,7 +62,7 @@ public class Vehiculo implements Serializable {
 	}
 
 	public void setTipo(String tipo) {
-		this.tipo = validarTipoVehiculo(tipo);
+		this.tipo = valideTipo(tipo);
 	}
 
 	public Integer getAnio() {
@@ -83,10 +89,19 @@ public class Vehiculo implements Serializable {
 		this.vendido = vendido;
 	}
 
+	public String getModelo() {
+		return this.modelo;
+	}
+
+	public void setModelo(String modelo) {
+		this.modelo = modelo;
+	}
+
 	@Override
 	public String toString() {
-		return "Vehiculo [codigo=" + this.codigo + ", marca=" + this.marca + ", tipo=" + this.tipo + ", anio="
-				+ this.anio + ", kilometraje=" + this.kilometraje + ", vendido=" + this.vendido + "]";
+		return "Vehiculo [codigo=" + this.codigo + ", marca=" + this.marca + ", modelo=" + this.modelo + ", tipo="
+				+ this.tipo + ", anio=" + this.anio + ", kilometraje=" + this.kilometraje + ", vendido=" + this.vendido
+				+ "]";
 	}
 
 }
