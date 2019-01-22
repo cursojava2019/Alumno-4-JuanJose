@@ -1,6 +1,6 @@
 package es.indra.ejercicio8;
 
-public class Persona {
+public abstract class Persona {
 	
 	private static Character HOMBRE = 'H', MUJER = 'M';
 	
@@ -24,9 +24,30 @@ public class Persona {
 	
 	
 	
-	
-	
-	
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public Integer getEdad() {
+		return edad;
+	}
+
+	public void setEdad(Integer edad) {
+		this.edad = edad;
+	}
+
+	public Character getSexo() {
+		return sexo;
+	}
+
+	public void setSexo(Character sexo) {
+		this.sexo = comprobarSexo(sexo);
+	}
+
 	public Character comprobarSexo(char sexo) {
 		if(sexo == HOMBRE || sexo == MUJER) {
 			return sexo;
@@ -34,6 +55,16 @@ public class Persona {
 			return HOMBRE;
 		}
 	}
+	
+	//Devuelve true si asiste y false si no lo hace
+	public abstract Boolean asistir();
+
+	@Override
+	public String toString() {
+		return "Persona [nombre=" + nombre + ", edad=" + edad + ", sexo=" + sexo + "]";
+	}
+	
+	
 	
 	
 }
