@@ -1,7 +1,6 @@
 package es.indra.view;
 
 import java.io.File;
-
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -30,7 +29,6 @@ public class ProgramaBanco {
 	 * del banco
 	 */
 
-	// No me funciona init() //VER EN CASA
 	public static void init() throws ClassNotFoundException, IOException {
 		ENTRADA = new Scanner(System.in);
 		File file = new File(FICHERO_CUENTAS);
@@ -90,7 +88,7 @@ public class ProgramaBanco {
 				System.out.println("0. Salir.");
 				opcion = ENTRADA.nextInt();
 				ENTRADA.nextLine();
-	
+
 				switch (opcion) {
 				case 1:
 					aniadirCliente();
@@ -121,14 +119,14 @@ public class ProgramaBanco {
 					break;
 				}
 			} while (opcion != 0);
-		}catch(Exception e) {
+		} catch (Exception e) {
 			System.out.println("Error al guardar el fichero");
 			e.printStackTrace();
 		}
-		
+
 		try {
 			fin();
-		}catch(IOException e) {
+		} catch (IOException e) {
 			System.out.println("No se ha podido guardar");
 			e.printStackTrace();
 		}
@@ -219,12 +217,12 @@ public class ProgramaBanco {
 		Cuenta operacion = banco.ingresar(dni, codigo, dinero);
 
 		if (operacion != null) {
-			
+
 			File file = new File(FICHERO_BANCO);
-			if(!file.exists()) {
+			if (!file.exists()) {
 				try {
 					file.createNewFile();
-				}catch(Exception e) {
+				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
@@ -234,12 +232,12 @@ public class ProgramaBanco {
 				salida.write(operacion.toString());
 				salida.flush();
 				salida.close();
-			}catch(Exception e) {
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			
+
 			System.out.println("Ingreso realizado con éxito. Nuevo saldo: " + operacion.getSaldo());
-		}else {
+		} else {
 			System.out.println("No se ha podido realizar el ingreso.");
 		}
 	}
@@ -277,12 +275,12 @@ public class ProgramaBanco {
 		Cuenta operacion = banco.sacarDinero(dni, codigo, dinero, cuenta.getTipo());
 
 		if (operacion != null) {
-			
+
 			File file = new File(FICHERO_BANCO);
-			if(!file.exists()) {
+			if (!file.exists()) {
 				try {
 					file.createNewFile();
-				}catch(Exception e) {
+				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
@@ -292,11 +290,11 @@ public class ProgramaBanco {
 				salida.write(operacion.toString());
 				salida.flush();
 				salida.close();
-			}catch(Exception e) {
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 			System.out.println("Retirar dinero con éxito.: " + operacion.getSaldo());
-		}else {
+		} else {
 			System.out.println("No se ha podido retirar dinero.");
 		}
 	}
@@ -330,7 +328,7 @@ public class ProgramaBanco {
 		Cuenta operacion = banco.revisionMensual(dni, codigo, cuenta.getTipo());
 
 		if (operacion != null) {
-			
+
 			File file = new File(FICHERO_BANCO);
 			if (!file.exists()) {
 				try {
@@ -348,9 +346,9 @@ public class ProgramaBanco {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			
+
 			System.out.println("Revisión mensual con éxito. Salgo: " + operacion.getSaldo());
-		}else {
+		} else {
 			System.out.println("No se podido realizar la revisión.");
 		}
 	}
