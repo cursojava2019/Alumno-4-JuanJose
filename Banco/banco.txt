@@ -1,0 +1,1 @@
+Cuenta [tipo=cuenta vivienda, comision=2.0, saldo=36756.0]Cuenta [tipo=cuenta vivienda, comision=2.0, saldo=36756.0]Cuenta [tipo=cuenta vivienda, comision=0.0, saldo=7351.200109541416]

@@ -76,6 +76,7 @@ public class Banco implements Serializable {
 			if (tipoCuenta.equalsIgnoreCase("Cuenta corriente")) {
 				if (cuentas.getSaldo() >= dinero) {
 					s = cuentas.sacarDinero(dinero);
+					cuentas.setSaldo(s);
 				}
 			} else if (tipoCuenta.equalsIgnoreCase("Cuenta vivienda")) {
 				System.out.println("No se puede sacar dinero de la Cuenta Vivienda");
@@ -83,11 +84,12 @@ public class Banco implements Serializable {
 				Double limite = cuentas.getSaldo() + 500;
 				if (limite >= dinero) {
 					s = cuentas.sacarDinero(dinero);
+					cuentas.setSaldo(s);
 				} else {
 					cuentas.setBloqueada(true);
 				}
 			}
-			cuentas.setSaldo(s);
+			
 			return cuentas;
 		} else {
 			return null;
