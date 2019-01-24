@@ -1,4 +1,4 @@
-package es.indra.model;
+package es.indra.academia.model.support;
 
 import java.util.List;
 

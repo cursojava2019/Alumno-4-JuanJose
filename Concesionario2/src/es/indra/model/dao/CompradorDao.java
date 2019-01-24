@@ -9,8 +9,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import es.indra.model.Dao;
-import es.indra.model.DaoException;
+import es.indra.academia.model.support.Dao;
+import es.indra.academia.model.support.DaoException;
 import es.indra.model.entities.Comprador;
 import es.indra.model.entities.Vehiculo;
 import es.indra.model.support.DatosConexion;

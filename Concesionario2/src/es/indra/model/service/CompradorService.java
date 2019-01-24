@@ -1,6 +1,6 @@
 package es.indra.model.service;
 
-import es.indra.model.Dao;
+import es.indra.academia.model.support.Dao;
 import es.indra.model.dao.CompradorDao;
 import es.indra.model.entities.Comprador;
 import es.indra.model.support.Service;

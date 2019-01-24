@@ -2,8 +2,8 @@ package es.indra.model.service;
 
 import java.util.List;
 
-import es.indra.model.Dao;
-import es.indra.model.DaoException;
+import es.indra.academia.model.support.Dao;
+import es.indra.academia.model.support.DaoException;
 import es.indra.model.dao.VehiculoDao;
 import es.indra.model.entities.Vehiculo;
 import es.indra.model.support.Service;
