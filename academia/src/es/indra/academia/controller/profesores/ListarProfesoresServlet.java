@@ -52,9 +52,16 @@ public class ListarProfesoresServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		ProfesorService profesorService = ProfesorService.getInstance();
 
-		List<Profesor> profesores = profesorService.findAll();
+		ProfesorService profesorService = ProfesorService.getInstance();
+		String patron = request.getParameter("patron");
+		List<Profesor> profesores = null;
+		if (patron != null && !patron.equals("")) {
+			profesores = profesorService.findProfesoresPatron(patron);
+		} else {
+			profesores = profesorService.findAll();
+		}
+
 		request.setAttribute("listado", profesores);
 
 		RequestDispatcher dispacher = request.getRequestDispatcher("/WEB-INF/jsp/profesores/listado.jsp");
