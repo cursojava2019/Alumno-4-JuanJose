@@ -1,4 +1,4 @@
-package es.indra.academia.controller.alumnos;
+package es.indra.academia.controller.profesores;
 
 import java.io.IOException;
 import java.util.List;
@@ -10,20 +10,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import es.indra.academia.model.entities.Alumno;
-import es.indra.academia.model.service.AlumnoService;
+import es.indra.academia.model.entities.Profesor;
+import es.indra.academia.model.service.ProfesorService;
 
 /**
- * Servlet implementation class ListarAlumnosServer
+ * Servlet implementation class ListarProfesoresServlet
  */
-@WebServlet("/admin/alumnos/listado.html")
-public class ListarAlumnosServlet extends HttpServlet {
+@WebServlet("/admin/profesores/listado.html")
+public class ListarProfesoresServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public ListarAlumnosServlet() {
+	public ListarProfesoresServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -35,14 +35,14 @@ public class ListarAlumnosServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		ProfesorService profesorService = ProfesorService.getInstance();
 
-		AlumnoService alumnoService = AlumnoService.getInstance();
+		List<Profesor> profesores = profesorService.findAll();
+		request.setAttribute("listado", profesores);
 
-		List<Alumno> alumnos = alumnoService.findAll();
-		request.setAttribute("listado", alumnos);
-
-		RequestDispatcher dispacher = request.getRequestDispatcher("/WEB-INF/jsp/alumnos/listado.jsp");
+		RequestDispatcher dispacher = request.getRequestDispatcher("/WEB-INF/jsp/profesores/listado.jsp");
 		dispacher.forward(request, response);
+
 	}
 
 	/**
@@ -52,20 +52,14 @@ public class ListarAlumnosServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		ProfesorService profesorService = ProfesorService.getInstance();
 
-		AlumnoService alumnoService = AlumnoService.getInstance();
-		String patron = request.getParameter("patron");
-		List<Alumno> alumnos = null;
-		if (patron != null && !patron.equals("")) {
-			alumnos = alumnoService.findAlumnosPatron(patron);
-		} else {
-			alumnos = alumnoService.findAll();
-		}
+		List<Profesor> profesores = profesorService.findAll();
+		request.setAttribute("listado", profesores);
 
-		request.setAttribute("listado", alumnos);
-
-		RequestDispatcher dispacher = request.getRequestDispatcher("/WEB-INF/jsp/alumnos/listado.jsp");
+		RequestDispatcher dispacher = request.getRequestDispatcher("/WEB-INF/jsp/profesores/listado.jsp");
 		dispacher.forward(request, response);
+
 	}
 
 }
