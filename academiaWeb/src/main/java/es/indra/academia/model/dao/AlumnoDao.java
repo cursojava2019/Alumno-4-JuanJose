@@ -58,7 +58,7 @@ public class AlumnoDao implements Dao<Long, Alumno> {
 
 		try {
 			Connection co = Configuracion.getInstance().obtenerConexionBD();
-			PreparedStatement p = co.prepareStatement("UPDATE ALUMNO" + "SET nif=?," + "nombre=?," + "apellido1=?,"
+			PreparedStatement p = co.prepareStatement("UPDATE ALUMNO " + "SET nif=?," + "nombre=?," + "apellido1=?,"
 					+ "apellido2=?," + "telefono=?," + "correo=?," + "repetidor=?," + "fechaalta=?," + "fechabaja=?,"
 					+ "observaciones=?  WHERE id=?;");
 
