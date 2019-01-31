@@ -1,5 +1,5 @@
 <%@page import="java.util.ArrayList"%>
-<%@page import="es.indra.academia.controller.alumnos.AlumnoForm"%>
+<%@page import="es.indra.academia.controller.alumnos.ProfesorForm"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -7,7 +7,7 @@
 
 <%
 List<String> errores= (List<String>)request.getAttribute("errores");
-AlumnoForm formulario= (AlumnoForm)request.getAttribute("formulario");
+ProfesorForm formulario= (ProfesorForm)request.getAttribute("formulario");
 if (errores==null){
 	errores=new ArrayList<String>();
 }
@@ -26,7 +26,7 @@ if (formulario==null){
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Nuevo Alumno</h1>
+                    <h1 class="page-header">Nuevo Profesor</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
