@@ -29,7 +29,6 @@ public class ListarProfesoresServlet extends HttpServlet {
 	 */
 	public ListarProfesoresServlet() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
@@ -39,15 +38,17 @@ public class ListarProfesoresServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
 		this.log.info("Se recibe una petición para listar profesores");
 		ProfesorService profesorService = ProfesorService.getInstance();
 
 		List<Profesor> profesores = profesorService.findAll();
-		request.setAttribute("listado", profesores);
 
+		request.setAttribute("listado", profesores);
 		RequestDispatcher dispacher = request.getRequestDispatcher("/WEB-INF/jsp/profesores/listado.jsp");
 		this.log.debug("Se obtienen todos los profesores de BBDD y se mandan al jsp");
 		dispacher.forward(request, response);
+
 	}
 
 	/**
@@ -57,7 +58,6 @@ public class ListarProfesoresServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 
 		ProfesorService profesorService = ProfesorService.getInstance();
 		String patron = request.getParameter("patron");

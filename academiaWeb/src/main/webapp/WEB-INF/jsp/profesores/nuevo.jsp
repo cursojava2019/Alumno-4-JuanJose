@@ -1,5 +1,5 @@
 <%@page import="java.util.ArrayList"%>
-<%@page import="es.indra.academia.controller.alumnos.ProfesorForm"%>
+<%@page import="es.indra.academia.controller.profesores.ProfesorForm"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -12,7 +12,7 @@ if (errores==null){
 	errores=new ArrayList<String>();
 }
 if (formulario==null){
-	formulario=new AlumnoForm();
+	formulario=new ProfesorForm();
 }
 %>
 <html>
@@ -80,17 +80,10 @@ if (formulario==null){
                                             <input name="email" class="form-control" type="email" value="<%=formulario.getCorreo()%>">
                                             <p class="help-block"></p>
                                         </div>
-                                        <div class="form-group">
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input name="repetidor" type="checkbox" value="" checked="<%=formulario.getRepetidor()%>"/>Repetidor
-                                                </label>
-                                            </div>
-                                        </div>
                                         
                                         <div class="form-group">
-                                            <label>Observaciones</label>
-                                            <textarea class="form-control" name="observaciones" rows="3"><%=formulario.getObservaciones()%></textarea>
+                                            <label>Titulación</label>
+                                            <textarea class="form-control" name="titulacion" rows="3"><%=formulario.getTitulacion()%></textarea>
                                         </div>
                                       
                                         <button type="submit" class="btn btn-default">Enviar</button>

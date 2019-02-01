@@ -10,19 +10,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import es.indra.academia.model.entities.Profesor;
 import es.indra.academia.model.service.ProfesorService;
 
 /**
- * Servlet implementation class CrearAlumnoServlet
+ * Servlet implementation class ModificarAlumnoServlet
  */
-@WebServlet("/admin/profesores/nuevo.html")
-public class CrearProfesorServlet extends HttpServlet {
+@WebServlet("/admin/profesores/modificar.html")
+public class ModificarProfesorServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public CrearProfesorServlet() {
+	public ModificarProfesorServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -34,9 +35,29 @@ public class CrearProfesorServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		String id = request.getParameter("id");
+		Long idLong = null;
+		ProfesorService profesorService = ProfesorService.getInstance();
+		try {
+			idLong = Long.parseLong(id);
+		} catch (NumberFormatException e) {
+			idLong = null;
+		}
+		if (idLong == null) {
+			response.sendRedirect("./listado.html?mensaje=errorId");
+		} else {
+			Profesor profesor = profesorService.find(idLong);
+			if (profesor != null) {
+				ProfesorForm form = new ProfesorForm(profesor);
+				request.setAttribute("formulario", form);
+				RequestDispatcher dispacher = request.getRequestDispatcher("/WEB-INF/jsp/profesores/modificar.jsp");
+				dispacher.forward(request, response);
+			} else {
+				response.sendRedirect("./listado.html?mensaje=errorId");
+			}
 
-		RequestDispatcher dispacher = request.getRequestDispatcher("/WEB-INF/jsp/profesores/nuevo.jsp");
-		dispacher.forward(request, response);
+		}
+
 	}
 
 	/**
@@ -56,11 +77,11 @@ public class CrearProfesorServlet extends HttpServlet {
 			request.setAttribute("formulario", profesor);
 			request.setAttribute("errores", errores);
 
-			RequestDispatcher dispacher = request.getRequestDispatcher("/WEB-INF/jsp/profesores/nuevo.jsp");
+			RequestDispatcher dispacher = request.getRequestDispatcher("/WEB-INF/jsp/profesores/modificar.jsp");
 			dispacher.forward(request, response);
 		} else {
 			ProfesorService profesorService = ProfesorService.getInstance();
-			profesorService.create(profesor);
+			profesorService.update(profesor);
 
 			response.sendRedirect("./listado.html?mensaje=correcto");
 		}

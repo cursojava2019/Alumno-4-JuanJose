@@ -99,15 +99,16 @@
                                         <th>Apellidos</th>
                                         <th>DNI</th>
                                         <th>Telefono</th>
+                                        <th>Titulación</th>
                                         <th>Opciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                <c:forEach var="alumno" items="${listado}"> 
+                                <c:forEach var="profesor" items="${listado}"> 
                                
                                     <tr class="odd gradeX">
                                         <td>${profesor.nombre}</td>
-                                        <td>${profesor.apellido1} ${alumno.apellido2}</td>
+                                        <td>${profesor.apellido1} ${profesor.apellido2}</td>
                                         <td>${profesor.nif}</td>
                                         <td>${profesor.telefono}</td>
                                         <td>${profesor.titulacion}</td>

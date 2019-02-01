@@ -48,8 +48,7 @@ public class ProfesorService extends Service<Long, Profesor> {
 
 	@Override
 	protected Logger getLog() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.log;
 	}
 
 }

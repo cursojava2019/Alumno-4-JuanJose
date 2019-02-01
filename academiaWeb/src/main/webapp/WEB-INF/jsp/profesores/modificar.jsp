@@ -1,6 +1,6 @@
-<%@page import="es.indra.academia.model.entities.Alumno"%>
+<%@page import="es.indra.academia.model.entities.Profesor"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="es.indra.academia.controller.alumnos.AlumnoForm"%>
+<%@page import="es.indra.academia.controller.profesores.ProfesorForm"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -8,12 +8,12 @@
 
 <%
 List<String> errores= (List<String>)request.getAttribute("errores");
-AlumnoForm formulario= (AlumnoForm)request.getAttribute("formulario");
+ProfesorForm formulario= (ProfesorForm)request.getAttribute("formulario");
 if (errores==null){
 	errores=new ArrayList<String>();
 }
 if (formulario==null){
-	formulario=new AlumnoForm();
+	formulario=new ProfesorForm();
 }
 %>
 <html>
@@ -27,7 +27,7 @@ if (formulario==null){
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Modificar Alumno</h1>
+                    <h1 class="page-header">Modificar Profesor</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -83,19 +83,9 @@ if (formulario==null){
                                             <p class="help-block"></p>
                                         </div>
                                         <div class="form-group">
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input name="repetidor" type="checkbox" value="" checked="<%=formulario.getRepetidor()%>"/>Repetidor
-                                                </label>
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="form-group">
                                             <label>Observaciones</label>
-                                            <textarea class="form-control" name="observaciones" rows="3"><%=formulario.getObservaciones()%></textarea>
+                                            <textarea class="form-control" name="titulacion" rows="3"><%=formulario.getTitulacion()%></textarea>
                                         </div>
-                                      		<input type="hidden" name="fechaAlta" value="<%=formulario.getFechaAltaString()%>"/>
-                                      		<input type="hidden" name="fechaBaja" value="<%=formulario.getFechaBajaString()%>"/>
                                         <button type="submit" class="btn btn-default">Enviar</button>
                                         <button type="reset" class="btn btn-default">Limpiar</button>
                                     </form>

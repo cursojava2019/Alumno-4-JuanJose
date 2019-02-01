@@ -80,10 +80,15 @@ if (formulario==null){
                                             <input name="email" class="form-control" type="email" value="<%=formulario.getCorreo()%>">
                                             <p class="help-block"></p>
                                         </div>
+                                        
+                                        <c:if test="${formulario.repetidor==true}">
+                                        	<c:set var="chequeado" value="checked"></c:set>
+                                        </c:if>
+                                        
                                         <div class="form-group">
                                             <div class="checkbox">
                                                 <label>
-                                                    <input name="repetidor" type="checkbox" value="" checked="<%=formulario.getRepetidor()%>"/>Repetidor
+                                                    <input name="repetidor" type="checkbox" value="true" ${chequeado}/>Repetidor
                                                 </label>
                                             </div>
                                         </div>

@@ -29,7 +29,6 @@ public class ListarAlumnosServlet extends HttpServlet {
 	 */
 	public ListarAlumnosServlet() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	/**

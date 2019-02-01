@@ -42,13 +42,45 @@ public class ProfesorDao implements Dao<Long, Profesor> {
 
 	@Override
 	public void update(Profesor entity) throws DaoException {
-		// TODO Auto-generated method stub
+
+		try {
+			Connection co = Configuracion.getInstance().obtenerConexionBD();
+			PreparedStatement p = co.prepareStatement("UPDATE PROFESOR " + "SET nif=?," + "nombre=?," + "apellido1=?,"
+					+ "apellido2=?," + "telefono=?," + "correo=?," + "titulacion=?  WHERE id=?;");
+
+			p.setLong(8, entity.getId());
+			p.setString(1, entity.getNif());
+			p.setString(2, entity.getNombre());
+			p.setString(3, entity.getApellido1());
+			p.setString(4, entity.getApellido2());
+			p.setString(5, entity.getTelefono());
+			p.setString(6, entity.getCorreo());
+			p.setString(7, entity.getTitulacion());
+			p.executeUpdate();
+			co.close();
+		} catch (SQLException e) {
+			System.out.println("Error modificando objeto en BBDD");
+			e.printStackTrace();
+			throw new DaoException();
+		}
 
 	}
 
 	@Override
 	public void delete(Long key) throws DaoException {
-		// TODO Auto-generated method stub
+
+		try {
+			Connection co = Configuracion.getInstance().obtenerConexionBD();
+			PreparedStatement p = co.prepareStatement("DELETE FROM PROFESOR WHERE id=?");
+
+			p.setLong(1, key);
+			p.executeUpdate();
+			co.close();
+		} catch (SQLException e) {
+			System.out.println("Error borrando objeto en BBDD");
+			e.printStackTrace();
+			throw new DaoException();
+		}
 
 	}
 
