@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  <display-name>academiaProfesor</display-name>
+  <servlet>
+  	<description>
+  	</description>
+  	<display-name>ModificarProfesorServlet</display-name>
+  	<servlet-name>ModificarProfesorServlet</servlet-name>
+  	<servlet-class>es.indra.academia.controller.profesores.ModificarProfesorServlet</servlet-class>
+  </servlet>
+  <servlet>
+  	<description>
+  	</description>
+  	<display-name>EliminarProfesorServlet</display-name>
+  	<servlet-name>EliminarProfesorServlet</servlet-name>
+  	<servlet-class>es.indra.academia.controller.profesores.EliminarProfesorServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>ModificarProfesorServlet</servlet-name>
+  	<url-pattern>/ModificarProfesorServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>EliminarProfesorServlet</servlet-name>
+  	<url-pattern>/EliminarProfesorServlet</url-pattern>
+  </servlet-mapping>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>
