@@ -48,7 +48,7 @@ public class SeguridadFilter implements Filter {
 		if (identificador != null && identificador.equals("si")) {
 			chain.doFilter(request, response);
 		} else {
-			respuesta.sendRedirect(peticion.getContextPath() + "/index.html");
+			respuesta.sendRedirect(peticion.getContextPath() + "/index.jsp");
 
 		}
 	}

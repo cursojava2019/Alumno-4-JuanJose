@@ -83,8 +83,9 @@ if (formulario==null){
                                             <p class="help-block"></p>
                                         </div>
                                         <div class="form-group">
-                                            <label>Observaciones</label>
-                                            <textarea class="form-control" name="titulacion" rows="3"><%=formulario.getTitulacion()%></textarea>
+                                            <label>Titulación</label>
+                                            <input name="titulacion" class="form-control" value="<%=formulario.getTitulacion()%>">
+                                            <p class="help-block"></p>
                                         </div>
                                         <button type="submit" class="btn btn-default">Enviar</button>
                                         <button type="reset" class="btn btn-default">Limpiar</button>

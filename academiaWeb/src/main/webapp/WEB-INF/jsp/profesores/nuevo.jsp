@@ -83,7 +83,8 @@ if (formulario==null){
                                         
                                         <div class="form-group">
                                             <label>Titulación</label>
-                                            <textarea class="form-control" name="titulacion" rows="3"><%=formulario.getTitulacion()%></textarea>
+                                            <input name="titulacion" class="form-control" value="<%=formulario.getTitulacion()%>">
+                                            <p class="help-block"></p>
                                         </div>
                                       
                                         <button type="submit" class="btn btn-default">Enviar</button>
