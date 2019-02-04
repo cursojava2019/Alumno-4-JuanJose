@@ -18,18 +18,12 @@
             </div>
             <!-- /.Incluir mi codigo -->
             <div class="row">
-            <div class="col-lg-12">
-            	<h3>Bienvenido a la gestión de la academia, elija una opción del menú</h3>
+	            <div class="col-lg-12">
+	            	<h3>Bienvenido a la gestión de la academia, elija una opción del menú</h3>
+	            </div>
             </div>
-            
-            
-            </div>
-            
-            
-            
         </div>
         <!-- /#page-wrapper -->
-
     </div>
     <!-- /#wrapper -->
 

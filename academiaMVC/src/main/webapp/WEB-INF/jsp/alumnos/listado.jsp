@@ -1,8 +1,8 @@
-<%@page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="es.indra.academia.model.entities.Alumno"%>
 <%@page import="java.util.List"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
  <%
  
@@ -29,10 +29,10 @@
 	<script>
 	function confirmarEliminacion(id){
 		if (confirm("¿Está seguro que desea eliminar este alumno?")){
-			
 			location.href='${ruta}/admin/alumnos/eliminar.html?id='+id;
-			
 		}
+		
+		
 	}
 	</script>
     <div id="wrapper">
@@ -71,7 +71,7 @@
                         <div class="col-6">
                         <label>Buscar Alumno</label>
                         </div>
-                        <div style="float:right;">  <button class="btn btn-default"  onclick="location.href='${ruta}/admin/alumnos/nuevo.html';" type="button"><i class="fa fa-user"> Nuevo Usuario</i>
+                        <div style="float:right;">  <button class="btn btn-default"  onclick="location.href='<%=request.getContextPath()%>/admin/alumnos/nuevo.html';" type="button"><i class="fa fa-user"> Nuevo Usuario</i>
                                                 </button></div>
                         <div class="col-6">
                                             <input class="" name="patron" type="text" value="${param.patron}">

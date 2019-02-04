@@ -9,11 +9,14 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import es.indra.academia.configuration.Configuracion;
 import es.indra.academia.model.entities.Alumno;
 import es.indra.academia.model.support.Dao;
 import es.indra.academia.model.support.DaoException;
 
+@Repository
 public class AlumnoDao implements Dao<Long, Alumno> {
 
 	private static final String CAMPOS = "nif,nombre,apellido1,apellido2,telefono,correo,repetidor,fechaalta,fechabaja,observaciones";
@@ -211,6 +214,30 @@ public class AlumnoDao implements Dao<Long, Alumno> {
 			co.close();
 			return listado;
 		} catch (Exception e) {
+			System.out.println("Error creando objeto en BBDD");
+			e.printStackTrace();
+			throw new DaoException();
+		}
+	}
+
+	public List<Alumno> buscarNif(String nif) throws DaoException {
+
+		Alumno alumno = null;
+		try {
+			Connection co = Configuracion.getInstance().obtenerConexionBD();
+			String query = "SELECT id," + CAMPOS + " FROM ALUMNO WHERE nif=?";
+			PreparedStatement instruccion = co.prepareStatement(query);
+
+			instruccion.setString(1, nif);
+			ResultSet resultados = instruccion.executeQuery();
+			ArrayList<Alumno> listado = new ArrayList<Alumno>();
+			if (resultados.next()) {
+				alumno = obtenerAlumno(resultados);
+				listado.add(alumno);
+			}
+			co.close();
+			return listado;
+		} catch (SQLException e) {
 			System.out.println("Error creando objeto en BBDD");
 			e.printStackTrace();
 			throw new DaoException();
