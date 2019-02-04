@@ -30,7 +30,7 @@
 	function confirmarEliminacion(id){
 		if (confirm("¿Está seguro que desea eliminar este profesor?")){
 			
-			location.href='${ruta}/admin/profesor/eliminar.html?id='+id;
+			location.href='${ruta}/admin/profesores/eliminar.html?id='+id;
 			
 		}
 	}
