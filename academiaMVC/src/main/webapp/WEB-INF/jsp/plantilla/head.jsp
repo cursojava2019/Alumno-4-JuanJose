@@ -21,6 +21,9 @@
 
     <!-- Morris Charts CSS -->
     <link href="<%=request.getContextPath() %>/vendor/morrisjs/morris.css" rel="stylesheet">
+    
+    <!--  Mi CSS -->
+    <link href="<%=request.getContextPath() %>/dist/css/micss.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="<%=request.getContextPath() %>/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
