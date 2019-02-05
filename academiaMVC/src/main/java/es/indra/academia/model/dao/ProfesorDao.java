@@ -8,11 +8,14 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import es.indra.academia.configuration.Configuracion;
 import es.indra.academia.model.entities.Profesor;
 import es.indra.academia.model.support.Dao;
 import es.indra.academia.model.support.DaoException;
 
+@Repository
 public class ProfesorDao implements Dao<Long, Profesor> {
 
 	private static final String CAMPOS = "nif,nombre,apellido1,apellido2,telefono,correo,titulacion";
@@ -186,7 +189,7 @@ public class ProfesorDao implements Dao<Long, Profesor> {
 			throw new DaoException();
 		}
 	}
-	
+
 	public List<Profesor> buscarNif(String nif) throws DaoException {
 
 		Profesor profesor = null;

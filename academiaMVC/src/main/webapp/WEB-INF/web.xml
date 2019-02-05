@@ -34,9 +34,20 @@
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
+    <servlet>
+    	<description>
+    	</description>
+    	<display-name>CustomUserDetailsService</display-name>
+    	<servlet-name>CustomUserDetailsService</servlet-name>
+    	<servlet-class>es.indra.academia.authentication.CustomUserDetailsService</servlet-class>
+    </servlet>
 
     <servlet-mapping>
         <servlet-name>dispatcherServlet</servlet-name>
         <url-pattern>*.html</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+    	<servlet-name>CustomUserDetailsService</servlet-name>
+    	<url-pattern>/CustomUserDetailsService</url-pattern>
     </servlet-mapping>
 </web-app>

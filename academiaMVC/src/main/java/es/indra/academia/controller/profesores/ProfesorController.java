@@ -1,3 +1,4 @@
+
 package es.indra.academia.controller.profesores;
 
 import java.util.ArrayList;
@@ -20,10 +21,10 @@ import es.indra.academia.model.entities.Profesor;
 import es.indra.academia.model.service.ProfesorService;
 
 @Controller
-@RequestMapping("/admin/profesor")
+@RequestMapping("/admin/profesores")
 public class ProfesorController {
 	@Autowired
-	AlumnoService alumnoService;
+	ProfesorService profesorService;
 
 	@Autowired
 	ProfesorFormValidator validador;
@@ -31,29 +32,29 @@ public class ProfesorController {
 
 	@RequestMapping(value = "/listado.html", method = RequestMethod.GET)
 	public String listado(Model model) {
-		this.log.info("listado Alumnos");
-		List<Profesor> listado = this.alumnoService.findAll();
+		this.log.info("listado Profesores");
+		List<Profesor> listado = this.profesorService.findAll();
 		model.addAttribute("listado", listado);
-		return "alumnos/listado";
+		return "profesores/listado";
 	}
 
 	@RequestMapping(value = "/nuevo.html", method = RequestMethod.GET)
 	public String nuevo(Model model) {
-		model.addAttribute("alumno", new ProfesorForm(new Alumno()));
-		return "alumnos/nuevo";
+		model.addAttribute("profesor", new ProfesorForm(new Profesor()));
+		return "profesores/nuevo";
 	}
 
 	@RequestMapping(value = "/nuevo.html", method = RequestMethod.POST)
-	public String nuevoPost(@Valid @ModelAttribute("alumno") ProfesorForm form, BindingResult result) {
+	public String nuevoPost(@Valid @ModelAttribute("profesor") ProfesorForm form, BindingResult result) {
 		ArrayList<String> errores = new ArrayList<String>();
 		this.validador.validate(form, result);
 		if (result.hasErrors()) {
-			return "alumnos/nuevo";
+			return "profesores/nuevo";
 
 		} else {
 
-			this.alumnoService.create(form.obtenerAlumno());
-			return "redirect:/admin/alumnos/listado.html?mensaje=correcto";
+			this.profesorService.create(form.obtenerProfesor());
+			return "redirect:/admin/profesores/listado.html?mensaje=correcto";
 
 		}
 
@@ -62,17 +63,17 @@ public class ProfesorController {
 	@RequestMapping(value = "/modificar.html", method = RequestMethod.GET)
 	public String modificar(@RequestParam("id") Long id, Model model) {
 		if (id == null) {
-			return "redirect:/admin/alumnos/listado.html?mensaje=errorId";
+			return "redirect:/admin/profesores/listado.html?mensaje=errorId";
 
 		} else {
-			Alumno alumno = this.alumnoService.find(id);
-			if (alumno != null) {
-				ProfesorForm form = new ProfesorForm(alumno);
+			Profesor profesor = this.profesorService.find(id);
+			if (profesor != null) {
+				ProfesorForm form = new ProfesorForm(profesor);
 				model.addAttribute("formulario", form);
-				return "alumnos/modificar";
+				return "profesores/modificar";
 
 			} else {
-				return "redirect:/admin/alumnos/listado.html?mensaje=errorId";
+				return "redirect:/admin/profesores/listado.html?mensaje=errorId";
 			}
 
 		}
@@ -82,20 +83,20 @@ public class ProfesorController {
 	// CONSULTAR EL CREAR Y TERMINAR MODIFICAR
 
 	@RequestMapping(value = "/modificar.html", method = RequestMethod.POST)
-	public String modificarPost(@ModelAttribute("formulario") ProfesorForm alumno, BindingResult result) {
+	public String modificarPost(@ModelAttribute("formulario") ProfesorForm profesor, BindingResult result) {
 		ArrayList<String> errores = new ArrayList<String>();
 
-		// alumno.validar(errores);
+		// profesor.validar(errores);
 		if (errores.size() > 0) {
 
 			// model.addAttribute("errores", errores);
 
-			return "alumnos/modificar";
+			return "profesores/modificar";
 		} else {
 
-			this.alumnoService.update(alumno.obtenerAlumno());
+			this.profesorService.update(profesor.obtenerProfesor());
 
-			return "redirect:/admin/alumnos/listado.html?mensaje=correcto";
+			return "redirect:/admin/profesores/listado.html?mensaje=correcto";
 		}
 
 	}
@@ -104,14 +105,14 @@ public class ProfesorController {
 	public String eliminar(@RequestParam("id") Long id, Model model) {
 
 		if (id == null) {
-			return "redirect:/admin/alumnos/listado.html?mensaje=errorId";
+			return "redirect:/admin/profesores/listado.html?mensaje=errorId";
 		} else {
-			Alumno alumno = this.alumnoService.find(id);
-			if (alumno != null) {
-				this.alumnoService.delete(id);
-				return "redirect:/admin/alumnos/listado.html?mensaje=correcto";
+			Profesor profesor = this.profesorService.find(id);
+			if (profesor != null) {
+				this.profesorService.delete(id);
+				return "redirect:/admin/profesores/listado.html?mensaje=correcto";
 			} else {
-				return "redirect:/admin/alumnos/listado.html?mensaje=errorId";
+				return "redirect:/admin/profesores/listado.html?mensaje=errorId";
 			}
 
 		}

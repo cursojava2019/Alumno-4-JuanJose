@@ -66,7 +66,7 @@
                             Listado de Alumnos
                         </div>
                         
-                        <form name="buscador" action="./listado.html" method="post">
+                        <form name="buscador" action="./listado.html" method="get">
                         <div class="">
                         <div class="col-6">
                         <label>Buscar Alumno</label>

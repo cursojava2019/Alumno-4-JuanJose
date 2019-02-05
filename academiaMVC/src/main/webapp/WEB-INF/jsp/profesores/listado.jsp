@@ -1,5 +1,5 @@
 <%@page import="java.util.ArrayList"%>
-<%@page import="es.indra.academia.model.entities.Alumno"%>
+<%@page import="es.indra.academia.model.entities.Profesor"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -28,8 +28,8 @@
 <c:out  value=""></c:out>
 	<script>
 	function confirmarEliminacion(id){
-		if (confirm("¿Está seguro que desea eliminar este alumno?")){
-			location.href='${ruta}/admin/alumnos/eliminar.html?id='+id;
+		if (confirm("¿Está seguro que desea eliminar este profesor?")){
+			location.href='${ruta}/admin/profesores/eliminar.html?id='+id;
 		}
 		
 		
@@ -42,7 +42,7 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Alumnos</h1>
+                    <h1 class="page-header">Profesores</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -63,15 +63,15 @@
                             
                             
                         <div class="panel-heading">
-                            Listado de Alumnos
+                            Listado de Profesores
                         </div>
                         
                         <form name="buscador" action="./listado.html" method="get">
                         <div class="">
                         <div class="col-6">
-                        <label>Buscar Alumno</label>
+                        <label>Buscar Profesor</label>
                         </div>
-                        <div style="float:right;">  <button class="btn btn-default"  onclick="location.href='<%=request.getContextPath()%>/admin/alumnos/nuevo.html';" type="button"><i class="fa fa-user"> Nuevo Usuario</i>
+                        <div style="float:right;">  <button class="btn btn-default"  onclick="location.href='<%=request.getContextPath()%>/admin/profesores/nuevo.html';" type="button"><i class="fa fa-user"> Nuevo Usuario</i>
                                                 </button></div>
                         <div class="col-6">
                                             <input class="" name="patron" type="text" value="${param.patron}">
@@ -99,18 +99,20 @@
                                         <th>Apellidos</th>
                                         <th>DNI</th>
                                         <th>Telefono</th>
+                                        <th>Titulación</th>
                                         <th>Opciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                <c:forEach var="alumno" items="${listado}"> 
+                                <c:forEach var="profesor" items="${listado}"> 
                                
                                     <tr class="odd gradeX">
-                                        <td>${alumno.nombre}</td>
-                                        <td>${alumno.apellido1} ${alumno.apellido2}</td>
-                                        <td>${alumno.nif}</td>
-                                        <td>${alumno.telefono}</td>
-                                        <td ><a href="${ruta}/admin/alumnos/modificar.html?id=${alumno.id}">Modificar</a> <a href="#" onclick="confirmarEliminacion(${alumno.id})">Eliminar</a></td>
+                                        <td>${profesor.nombre}</td>
+                                        <td>${profesor.apellido1} ${profesor.apellido2}</td>
+                                        <td>${profesor.nif}</td>
+                                        <td>${profesor.telefono}</td>
+                                        <td>${profesor.titulacion}</td>
+                                        <td ><a href="${ruta}/admin/profesores/modificar.html?id=${profesor.id}">Modificar</a> <a href="#" onclick="confirmarEliminacion(${profesor.id})">Eliminar</a></td>
                                     </tr>
                               </c:forEach>   
                                 </tbody>

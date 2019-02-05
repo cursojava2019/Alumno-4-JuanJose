@@ -37,6 +37,23 @@ public class AlumnoController {
 		return "alumnos/listado";
 	}
 
+	// Listado de alumnos buscados por patron TERMINAR
+
+	@RequestMapping(value = "/listado.html", method = RequestMethod.POST)
+	public String listadoPatron(@RequestParam("patron") String patron, Model model) {
+
+		List<Alumno> listado = null;
+
+		if (patron == "") {
+			listado = this.alumnoService.findAll();
+		} else {
+			listado = this.alumnoService.findAlumnosPatron(patron);
+		}
+
+		model.addAttribute("listado", listado);
+		return "profesores/listado";
+	}
+
 	@RequestMapping(value = "/nuevo.html", method = RequestMethod.GET)
 	public String nuevo(Model model) {
 		model.addAttribute("alumno", new AlumnoForm(new Alumno()));
