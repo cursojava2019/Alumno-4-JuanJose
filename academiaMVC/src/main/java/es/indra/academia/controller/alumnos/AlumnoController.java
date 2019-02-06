@@ -37,7 +37,7 @@ public class AlumnoController {
 		return "alumnos/listado";
 	}
 
-	// Listado de alumnos buscados por patron TERMINAR
+	// Listado de alumnos buscados por patron 
 
 	@RequestMapping(value = "/listado.html", method = RequestMethod.POST)
 	public String listadoPatron(@RequestParam("patron") String patron, Model model) {
