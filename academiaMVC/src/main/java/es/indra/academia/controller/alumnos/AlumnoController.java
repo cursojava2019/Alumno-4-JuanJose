@@ -42,16 +42,17 @@ public class AlumnoController {
 	@RequestMapping(value = "/listado.html", method = RequestMethod.POST)
 	public String listadoPatron(@RequestParam("patron") String patron, Model model) {
 
+		this.log.info("listado Alumnos por patrón");
 		List<Alumno> listado = null;
 
-		if (patron == "") {
-			listado = this.alumnoService.findAll();
-		} else {
+		if (patron != null || !patron.equals("")) {
 			listado = this.alumnoService.findAlumnosPatron(patron);
+		} else {
+			listado = this.alumnoService.findAll();
 		}
 
 		model.addAttribute("listado", listado);
-		return "profesores/listado";
+		return "alumnos/listado";
 	}
 
 	@RequestMapping(value = "/nuevo.html", method = RequestMethod.GET)
