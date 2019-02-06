@@ -1,6 +1,5 @@
 package es.indra.academia.controller.alumnos;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -8,6 +7,7 @@ import javax.validation.Valid;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import es.indra.academia.authentication.MyUserDetails;
 import es.indra.academia.model.entities.Alumno;
 import es.indra.academia.model.service.AlumnoService;
 
@@ -31,13 +32,16 @@ public class AlumnoController {
 
 	@RequestMapping(value = "/listado.html", method = RequestMethod.GET)
 	public String listado(Model model) {
+		MyUserDetails user = (MyUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		String name = user.getUsername(); // get logged in username
+
 		this.log.info("listado Alumnos");
 		List<Alumno> listado = this.alumnoService.findAll();
 		model.addAttribute("listado", listado);
 		return "alumnos/listado";
 	}
 
-	// Listado de alumnos buscados por patron 
+	// Listado de alumnos BUSCADOS por PATRON
 
 	@RequestMapping(value = "/listado.html", method = RequestMethod.POST)
 	public String listadoPatron(@RequestParam("patron") String patron, Model model) {
@@ -63,7 +67,7 @@ public class AlumnoController {
 
 	@RequestMapping(value = "/nuevo.html", method = RequestMethod.POST)
 	public String nuevoPost(@Valid @ModelAttribute("alumno") AlumnoForm form, BindingResult result) {
-		ArrayList<String> errores = new ArrayList<String>();
+
 		this.validador.validate(form, result);
 		if (result.hasErrors()) {
 			return "alumnos/nuevo";
@@ -97,22 +101,17 @@ public class AlumnoController {
 
 	}
 
-	// CONSULTAR EL CREAR Y TERMINAR MODIFICAR
+	// TERMINAR MODIFICAR ALUMNO -------------------------------------------------
 
 	@RequestMapping(value = "/modificar.html", method = RequestMethod.POST)
-	public String modificarPost(@ModelAttribute("formulario") AlumnoForm alumno, BindingResult result) {
-		ArrayList<String> errores = new ArrayList<String>();
+	public String modificarPost(@Valid @ModelAttribute("formulario") AlumnoForm form, BindingResult result) {
 
-		// alumno.validar(errores);
-		if (errores.size() > 0) {
+		this.validador.validate(form, result);
 
-			// model.addAttribute("errores", errores);
-
+		if (result.hasErrors()) {
 			return "alumnos/modificar";
 		} else {
-
-			this.alumnoService.update(alumno.obtenerAlumno());
-
+			this.alumnoService.update(form.obtenerAlumno());
 			return "redirect:/admin/alumnos/listado.html?mensaje=correcto";
 		}
 

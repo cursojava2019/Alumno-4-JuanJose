@@ -1,17 +1,11 @@
-<%@page import="java.util.ArrayList"%>
-<%@page import="es.indra.academia.model.entities.Alumno"%>
-<%@page import="java.util.List"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
- <%
- 
-  String texto="Texto muy guay";
-  session.setAttribute("texto", texto);
- 
- %>
-   
-    
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" 	prefix="form"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
+
 <c:if test="${param.mensaje eq 'correcto'}">
  <c:set var="mensajeOK" value="true" ></c:set>
 </c:if>
@@ -31,8 +25,6 @@
 		if (confirm("¿Está seguro que desea eliminar este alumno?")){
 			location.href='${ruta}/admin/alumnos/eliminar.html?id='+id;
 		}
-		
-		
 	}
 	</script>
     <div id="wrapper">
