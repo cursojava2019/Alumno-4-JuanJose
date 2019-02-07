@@ -27,14 +27,10 @@ request.setAttribute("ruta",request.getContextPath());
         <div id="page-wrapper">
             <tiles:insertAttribute name="script" />
             <tiles:insertAttribute name="content" />
-            
         </div>
        
 
     </div>
    
-
-  
-
 </body>
 </html>
