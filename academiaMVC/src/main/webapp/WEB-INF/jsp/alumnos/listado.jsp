@@ -13,13 +13,8 @@
 <c:if test="${param.mensaje=='errorId'}">
  <c:set var="mensajeError" value="true" ></c:set>
 </c:if>
-<!DOCTYPE html>
-<html>
-<c:import url="../plantilla/head.jsp"></c:import>
 
-<body>
 
-<c:out  value=""></c:out>
 	<script>
 	function confirmarEliminacion(id){
 		if (confirm("¿Está seguro que desea eliminar este alumno?")){
@@ -27,11 +22,7 @@
 		}
 	}
 	</script>
-    <div id="wrapper">
 
-        <!-- Navigation -->
-        <%@include file="../plantilla/cabecera.jsp" %>
-        <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">Alumnos</h1>
@@ -116,15 +107,6 @@
             
             </div>
             
-            
-            
-        </div>
-        <!-- /#page-wrapper -->
-
-    </div>
-    <!-- /#wrapper -->
-
-   <%@include file="../plantilla/javascriptPie.jsp" %>
 	 <script>
     $(document).ready(function() {
         $('#dataTables-example').DataTable({
@@ -138,7 +120,3 @@
     
    
     </script>
-    </script>
-	
-</body>
-</html>

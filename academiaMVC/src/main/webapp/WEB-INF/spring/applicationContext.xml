@@ -19,7 +19,7 @@
 
 <context:annotation-config />
  <context:component-scan base-package="es.indra" />
-	<bean
+<bean
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 
 		<property name="location">
