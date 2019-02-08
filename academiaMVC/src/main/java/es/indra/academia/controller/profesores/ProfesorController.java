@@ -32,34 +32,33 @@ public class ProfesorController {
 
 	@RequestMapping(value = "/listado.html", method = RequestMethod.GET)
 	public String listado(Model model) {
-		
+
 		MyUserDetails user = (MyUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		String name = user.getUsername(); // get logged in username
-		
+
 		this.log.info("listado Profesores");
 		List<Profesor> listado = this.profesorService.findAll();
 		model.addAttribute("listado", listado);
 		return "profesores/listado";
 	}
-	
-	//Listado de profesores BUSCADOS por PATRÓN
+
+	// Listado de profesores BUSCADOS por PATRÓN
 	@RequestMapping(value = "/listado.html", method = RequestMethod.POST)
 	public String listadoPatron(@RequestParam("patron") String patron, Model model) {
-		
+
 		this.log.info("listado Profesores por patrón");
 		List<Profesor> listado = null;
-		
-		if(patron != null || !patron.equals("")) {
+
+		if (patron != null || !patron.equals("")) {
 			listado = this.profesorService.findProfesoresPatron(patron);
-		}else {
+		} else {
 			listado = this.profesorService.findAll();
 		}
-		
+
 		model.addAttribute("listado", listado);
 		return "profesores/listado";
-		
+
 	}
-	
 
 	@RequestMapping(value = "/nuevo.html", method = RequestMethod.GET)
 	public String nuevo(Model model) {
@@ -69,7 +68,7 @@ public class ProfesorController {
 
 	@RequestMapping(value = "/nuevo.html", method = RequestMethod.POST)
 	public String nuevoPost(@Valid @ModelAttribute("profesor") ProfesorForm form, BindingResult result) {
-		
+
 		this.validador.validate(form, result);
 		if (result.hasErrors()) {
 			return "profesores/nuevo";
@@ -106,8 +105,8 @@ public class ProfesorController {
 	// CONSULTAR EL CREAR Y TERMINAR MODIFICAR
 
 	@RequestMapping(value = "/modificar.html", method = RequestMethod.POST)
-	public String modificarPost(@ModelAttribute("formulario") ProfesorForm form, BindingResult result) {
-	
+	public String modificarPost(@Valid @ModelAttribute("formulario") ProfesorForm form, BindingResult result) {
+
 		this.validador.validate(form, result);
 
 		if (result.hasErrors()) {

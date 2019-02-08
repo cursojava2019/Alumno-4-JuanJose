@@ -16,7 +16,7 @@
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a href="${ruta}/admin/index.html"><i class="fa fa-dashboard fa-fw"></i> Inicio</a>
+                            <a href="${ruta}/admin/inicio.html"><i class="fa fa-dashboard fa-fw"></i> Inicio</a>
                         </li>
                         
                         <sec:authorize access="hasRole('ALUMNOS')">

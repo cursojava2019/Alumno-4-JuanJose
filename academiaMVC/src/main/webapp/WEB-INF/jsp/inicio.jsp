@@ -10,4 +10,3 @@
  	<h3>Bienvenido a la gestión de la academia, elija una opción del menú</h3>
  </div>
 </div>
-       
