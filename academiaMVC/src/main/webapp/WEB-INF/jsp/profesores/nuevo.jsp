@@ -1,21 +1,11 @@
-<%@page import="java.util.ArrayList"%>
-<%@page import="es.indra.academia.controller.profesores.ProfesorForm"%>
-<%@page import="java.util.List"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" 	prefix="form"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 
-<html>
-<%@include file="../plantilla/head.jsp" %>
-<body>
-
-    <div id="wrapper">
-
-        <!-- Navigation -->
-        <%@include file="../plantilla/cabecera.jsp" %>
-        <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">Nuevo Profesor</h1>
@@ -36,6 +26,7 @@
                                 
                                     	<form:form action="./nuevo.html" method="post" modelAttribute="profesor" >
                                     	<form:hidden path="id" />
+                                    	<spring:hasBindErrors name="*"> HAY ERRORRES QUE RESOLVER</spring:hasBindErrors>
                                        
                                         <div class="form-group">
                                             <label>NIF</label>
@@ -44,19 +35,19 @@
                                             <p class="help-block"></p>
                                         </div>
                                         <div class="form-group">
-                                            <label>Nombre</label>
+                                            <label><spring:message code="profesor.nombre"/></label>
                                              <form:input path="nombre" class="form-control"/>
                                              <form:errors path="nombre" element="div" cssClass="alert alert-danger"/>
                                             <p class="help-block"></p>
                                         </div>
                                         <div class="form-group">
-                                            <label>Primer Apellido </label>
+                                            <label><spring:message code="profesor.apellido1"/> </label>
                                             <form:input path="apellido1" class="form-control"/>
                                             <form:errors path="apellido1" element="div" cssClass="alert alert-danger"/>
                                             <p class="help-block"></p>
                                         </div>
                                         <div class="form-group">
-                                            <label>Segundo Apellido</label>
+                                            <label><spring:message code="profesor.apellido2"/></label>
                                              <form:input path="apellido2" class="form-control"/>
                                             <form:errors path="apellido2" element="div" cssClass="alert alert-danger"/>
                                             <p class="help-block"></p>
@@ -100,14 +91,4 @@
             </div>
             
             
-            
-        </div>
-        <!-- /#page-wrapper -->
-
-    </div>
-    <!-- /#wrapper -->
-
-   <%@include file="../plantilla/javascriptPie.jsp" %>
-
-</body>
-</html>
+       

@@ -1,7 +1,5 @@
-
 package es.indra.academia.controller.profesores;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -9,6 +7,7 @@ import javax.validation.Valid;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -17,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import es.indra.academia.authentication.MyUserDetails;
 import es.indra.academia.model.entities.Profesor;
 import es.indra.academia.model.service.ProfesorService;
 
@@ -32,11 +32,34 @@ public class ProfesorController {
 
 	@RequestMapping(value = "/listado.html", method = RequestMethod.GET)
 	public String listado(Model model) {
+		
+		MyUserDetails user = (MyUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		String name = user.getUsername(); // get logged in username
+		
 		this.log.info("listado Profesores");
 		List<Profesor> listado = this.profesorService.findAll();
 		model.addAttribute("listado", listado);
 		return "profesores/listado";
 	}
+	
+	//Listado de profesores BUSCADOS por PATRÓN
+	@RequestMapping(value = "/listado.html", method = RequestMethod.POST)
+	public String listadoPatron(@RequestParam("patron") String patron, Model model) {
+		
+		this.log.info("listado Profesores por patrón");
+		List<Profesor> listado = null;
+		
+		if(patron != null || !patron.equals("")) {
+			listado = this.profesorService.findProfesoresPatron(patron);
+		}else {
+			listado = this.profesorService.findAll();
+		}
+		
+		model.addAttribute("listado", listado);
+		return "profesores/listado";
+		
+	}
+	
 
 	@RequestMapping(value = "/nuevo.html", method = RequestMethod.GET)
 	public String nuevo(Model model) {
@@ -46,7 +69,7 @@ public class ProfesorController {
 
 	@RequestMapping(value = "/nuevo.html", method = RequestMethod.POST)
 	public String nuevoPost(@Valid @ModelAttribute("profesor") ProfesorForm form, BindingResult result) {
-		ArrayList<String> errores = new ArrayList<String>();
+		
 		this.validador.validate(form, result);
 		if (result.hasErrors()) {
 			return "profesores/nuevo";
@@ -83,19 +106,14 @@ public class ProfesorController {
 	// CONSULTAR EL CREAR Y TERMINAR MODIFICAR
 
 	@RequestMapping(value = "/modificar.html", method = RequestMethod.POST)
-	public String modificarPost(@ModelAttribute("formulario") ProfesorForm profesor, BindingResult result) {
-		ArrayList<String> errores = new ArrayList<String>();
+	public String modificarPost(@ModelAttribute("formulario") ProfesorForm form, BindingResult result) {
+	
+		this.validador.validate(form, result);
 
-		// profesor.validar(errores);
-		if (errores.size() > 0) {
-
-			// model.addAttribute("errores", errores);
-
+		if (result.hasErrors()) {
 			return "profesores/modificar";
 		} else {
-
-			this.profesorService.update(profesor.obtenerProfesor());
-
+			this.profesorService.update(form.obtenerProfesor());
 			return "redirect:/admin/profesores/listado.html?mensaje=correcto";
 		}
 

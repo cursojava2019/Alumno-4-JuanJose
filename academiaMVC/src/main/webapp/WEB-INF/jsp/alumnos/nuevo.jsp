@@ -42,7 +42,7 @@
                                             <p class="help-block"></p>
                                         </div>
                                         <div class="form-group">
-                                             <label><spring:message code="alumno.apellido1"/> </label>
+                                            <label><spring:message code="alumno.apellido1"/> </label>
                                             <form:input path="apellido1" class="form-control"/>
                                             <form:errors path="apellido1" element="div" cssClass="alert alert-danger"/>
                                             <p class="help-block"></p>

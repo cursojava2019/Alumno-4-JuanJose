@@ -1,17 +1,11 @@
-<%@page import="java.util.ArrayList"%>
-<%@page import="es.indra.academia.model.entities.Profesor"%>
-<%@page import="java.util.List"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
- <%
- 
-  String texto="Texto muy guay";
-  session.setAttribute("texto", texto);
- 
- %>
-   
-    
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" 	prefix="form"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
+
 <c:if test="${param.mensaje eq 'correcto'}">
  <c:set var="mensajeOK" value="true" ></c:set>
 </c:if>
@@ -19,27 +13,17 @@
 <c:if test="${param.mensaje=='errorId'}">
  <c:set var="mensajeError" value="true" ></c:set>
 </c:if>
-<!DOCTYPE html>
-<html>
-<c:import url="../plantilla/head.jsp"></c:import>
 
-<body>
-
-<c:out  value=""></c:out>
 	<script>
+	
 	function confirmarEliminacion(id){
 		if (confirm("¿Está seguro que desea eliminar este profesor?")){
 			location.href='${ruta}/admin/profesores/eliminar.html?id='+id;
 		}
-		
-		
 	}
+	
 	</script>
-    <div id="wrapper">
-
-        <!-- Navigation -->
-        <%@include file="../plantilla/cabecera.jsp" %>
-        <div id="page-wrapper">
+    
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">Profesores</h1>
@@ -66,7 +50,7 @@
                             Listado de Profesores
                         </div>
                         
-                        <form name="buscador" action="./listado.html" method="get">
+                        <form name="buscador" action="./listado.html" method="post">
                         <div class="">
                         <div class="col-6">
                         <label>Buscar Profesor</label>
@@ -126,15 +110,7 @@
             
             </div>
             
-            
-            
-        </div>
-        <!-- /#page-wrapper -->
 
-    </div>
-    <!-- /#wrapper -->
-
-   <%@include file="../plantilla/javascriptPie.jsp" %>
 	 <script>
     $(document).ready(function() {
         $('#dataTables-example').DataTable({
@@ -148,7 +124,4 @@
     
    
     </script>
-    </script>
-	
-</body>
-</html>
+   
