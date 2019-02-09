@@ -46,9 +46,20 @@
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
+    <servlet>
+    	<description>
+    	</description>
+    	<display-name>AlumnoRestController</display-name>
+    	<servlet-name>AlumnoRestController</servlet-name>
+    	<servlet-class>es.indra.academia.controller.alumnos.AlumnoRestController</servlet-class>
+    </servlet>
 
     <servlet-mapping>
         <servlet-name>dispatcherServlet</servlet-name>
         <url-pattern>*.html</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+    	<servlet-name>AlumnoRestController</servlet-name>
+    	<url-pattern>/AlumnoRestController</url-pattern>
     </servlet-mapping>
 </web-app>
