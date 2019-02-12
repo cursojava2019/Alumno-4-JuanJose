@@ -38,6 +38,8 @@ public class AlumnoForm {
 	@Size(min = 0, max = 500)
 	private String observaciones;
 
+	private
+
 	public AlumnoForm() {
 		super();
 		this.nif = "";
