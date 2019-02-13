@@ -7,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Ejercicio4Component implements OnInit {
 
+	nombre: string;
+	pass: string;
+
   constructor() { }
 
   ngOnInit() {
