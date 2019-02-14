@@ -7,12 +7,11 @@ import { Articulo } from '../model/articulo';
 export class ArticuloService {
 
  private listado = Array<Articulo>();
-  constructor() {
 
-    this.listado.push(new Articulo(1, 'pan', 12));
-    this.listado.push(new Articulo(2, 'leche', 10));
-    this.listado.push(new Articulo(3, 'huevos', 6));
-    
+  constructor() {
+    this.listado.push(new Articulo(1, 'Pan', 3));
+    this.listado.push(new Articulo(2, 'Leche', 6));
+    this.listado.push(new Articulo(3, 'Carne', 90));
    }
 
   add(articulo: Articulo) {
@@ -25,7 +24,12 @@ export class ArticuloService {
   findAll() {
     return this.listado;
   }
-  deleteArticulo(indice: number) {
-    this.listado.splice(indice, 1);
+
+  updateArticulo(codigo: number) {
   }
+
+  deleteArticulo(codigo: number) {
+    this.listado.splice(codigo, 1);
+  }
+
 }

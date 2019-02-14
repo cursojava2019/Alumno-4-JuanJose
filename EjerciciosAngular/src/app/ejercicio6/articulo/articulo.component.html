@@ -1,7 +1,8 @@
-<tr>
-	<td>{{articulo.codigo}}</td>
-	<td>{{articulo.descripcion}}</td>
-	<td>{{articulo.precio}}</td>
-	<td><button>Borrar?</button></td>
-	<td><button>Seleccionar</button></td>
-</tr>
+
+  <td>{{articulo.codigo}}</td>
+  <td>{{articulo.descripcion}}</td>
+  <td>{{articulo.precio}} €</td>
+  <td><button (click)="solicitarEliminar()">Borrar?</button></td>
+  <td><button (click)="seleccionar(articulo.codigo)">Seleccionar</button></td>
+
+

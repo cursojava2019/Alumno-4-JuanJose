@@ -8,19 +8,30 @@ import { Articulo } from 'src/app/model/articulo';
 })
 export class ArticuloComponent implements OnInit {
 
-	@Input()
-	articulo: Articulo;
+  @Input()
+  articulo: Articulo;
+  @Input()
+  codigo: number;
 
-	@Output()
-	eventoModEliminar: EventEmitter<number>;
+  @Output()
+  eventoEliminacion: EventEmitter<number>;
+  @Output()
+  eventoModificar: EventEmitter<number>;
 
-  constructor() { 
-  	this.eventoModEliminar = new EventEmitter<number>();
+  constructor() {
+    this.eventoEliminacion = new EventEmitter<number>();
   }
 
   ngOnInit() {
   }
 
-  
+  seleccionar(codigo: number) {
+    console.log('seleccionar artículo ' + codigo);
+    this.eventoModificar.next(codigo);
+  }
 
+  solicitarEliminar() {
+    console.log('solicitar eliminar');
+    this.eventoEliminacion.next(this.codigo);
+  }
 }
