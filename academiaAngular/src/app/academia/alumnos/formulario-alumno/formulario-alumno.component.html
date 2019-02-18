@@ -4,7 +4,7 @@
     <fieldset class="form-group">
 
         <div class="form-group">
-            <label class="form-control-label" for="nif">Nif</label>
+            <label class="form-control-label" for="nif">NIF</label>
             <input class="form-control" type="text" placeholder="Introduzca el dni" formControlName="nif" [ngClass]="{'is-invalid': miFormulario.get('nif').dirty && !miFormulario.get('nif').valid}">
               <div *ngIf="miFormulario.get('nif').dirty && miFormulario.get('nif').errors"  class="alert alert-danger">
                   <p *ngIf="miFormulario.get('nif').hasError('required')">El nif es obligatorio</p>
@@ -73,7 +73,7 @@
         </div>
 
         <div class="form-group">
-            <label class="form-control-label" for="observaciones">observaciones</label>
+            <label class="form-control-label" for="observaciones">Observaciones</label>
             <textarea class="form-control" placeholder="Introduzca el observaciones electrónico" formControlName="observaciones" [ngClass]="{'is-invalid': miFormulario.get('observaciones').dirty && !miFormulario.get('observaciones').valid}"></textarea>
               <div *ngIf="miFormulario.get('observaciones').dirty && miFormulario.get('observaciones').errors"  class="alert alert-danger">
                   <p *ngIf="miFormulario.get('observaciones').hasError('maxlength')">Tamaño máximo de 1000 caracteres</p>

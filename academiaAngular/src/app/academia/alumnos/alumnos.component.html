@@ -2,17 +2,17 @@
 
   <app-page-header [heading]="'Gestión Alumnos'" [icon]="'fa-edit'"></app-page-header>
   <div class="row">
-    <div class="col col-xl-6 col-lg-12">
+    <div class="col col-12">
         <div class="card mb-3">
             <div class="card-header text-center" style="margin-top: 50px">
-                <p>Bienvenido a la Gestión de la academia juanchu</p>
+                <p>Bienvenido a la Gestión de la Academia Juanchu</p>
             </div>
         </div>
     </div>
   </div>
 
   <div class="row">
-    <div class="col col-xl-6 col-lg-12">
+    <div class="col col-12">
         <div class="card mb-3">
             <div class="card-header">
                 <button class="btn btn-success" (click)="irCrearAlumno()">Nuevo alumno</button>
@@ -34,7 +34,11 @@
                         <td>{{item.nombre}}</td>
                         <td>{{item.apellido1}} {{item.apellido2}}</td>
                         <td>{{item.telefono}}</td>
-                        <td><button (click)="modificar(item.id)" class="btn btn-primary">Modificar</button><button (click)="eliminar(item.id)" class="btn btn-danger">Eliminar</button></td>
+                        <td>
+                            <button (click)="modificar(item.id)" class="btn btn-primary">Modificar</button>
+
+                            <button (click)="eliminar(item.id)" class="btn btn-danger">Eliminar</button>
+                        </td>
                     </tr>
                     </tbody>
                 </table>

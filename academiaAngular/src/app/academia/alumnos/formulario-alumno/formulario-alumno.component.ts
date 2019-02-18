@@ -21,8 +21,11 @@ export class FormularioAlumnoComponent implements OnInit {
   modificado = new EventEmitter<Alumno>();
 
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder) {}
+
+  ngOnInit() {
     this.miFormulario = this.fb.group({
+      id : this.fb.control(''),
       nombre : this.fb.control('', [Validators.required, Validators.minLength(3)]),
       apellido1 : this.fb.control('', [Validators.required, Validators.minLength(3)]),
       apellido2 : this.fb.control('', [Validators.required, Validators.minLength(3)]),
@@ -34,15 +37,22 @@ export class FormularioAlumnoComponent implements OnInit {
       fechaAlta : this.fb.control('', []),
     });
 
-   }
-
-  ngOnInit() {
+    if (this.modificar === true) {
+      this.miFormulario.patchValue (this.alumnoModificar);
+    }
   }
 
   guardarCambios() {
+    if (this.modificar === false) {
+      const alumnoForm: Alumno = this.miFormulario.value;
+      alumnoForm.fechaAlta = new Date();
+      this.modificado.next(alumnoForm);
+   } else {
     const alumnoForm: Alumno = this.miFormulario.value;
-    alumnoForm.fechaAlta = new Date();
-    this.modificado.next(alumnoForm);
+
+     this.modificado.next(alumnoForm);
+   }
+
   }
 
 }
