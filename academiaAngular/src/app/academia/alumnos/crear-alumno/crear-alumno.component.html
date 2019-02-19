@@ -1,6 +1,6 @@
 <div [@routerTransition]>
 
-  <app-page-header [heading]="'Nuevo Alumno'" [icon]="'fa-new'"></app-page-header>
+  <app-page-header [heading]="'Nuevo Alumno'" [icon]="'fa-new'" class="text-center"></app-page-header>
   <div class="row">
     <div class="col-12">
       <app-formulario-alumno [modificar]='false' (modificado)="crear($event)"></app-formulario-alumno>
