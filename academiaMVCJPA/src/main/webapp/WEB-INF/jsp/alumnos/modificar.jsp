@@ -6,7 +6,6 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 
-
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">Modificar Alumno</h1>
@@ -27,7 +26,7 @@
                                                           			 
                            			<form:form action="./modificar.html" method="post" modelAttribute="formulario" >
                                     	<form:hidden path="id" />
-                                       <spring:hasBindErrors name="*">HAY ERRORES QUE RESOLVER</spring:hasBindErrors>
+                                       
                                         <div class="form-group">
                                             <label>NIF</label>
                                            <form:input path="nif" class="form-control"/>
@@ -35,46 +34,57 @@
                                             <p class="help-block"></p>
                                         </div>
                                         <div class="form-group">
-                                            <label><spring:message code="alumno.nombre"/></label>
+                                            <label>Nombre</label>
                                              <form:input path="nombre" class="form-control"/>
-                                             <form:errors path="nombre" element="div" cssClass="alert alert-danger"/>
                                             <p class="help-block"></p>
                                         </div>
                                         <div class="form-group">
-                                            <label><spring:message code="alumno.apellido1"/> </label>
+                                            <label>Primer Apellido </label>
                                             <form:input path="apellido1" class="form-control"/>
-                                            <form:errors path="apellido1" element="div" cssClass="alert alert-danger"/>
+                                            
                                             <p class="help-block"></p>
                                         </div>
                                         <div class="form-group">
-                                            <label><spring:message code="alumno.apellido2"/></label>
+                                            <label>Segundo Apellido</label>
                                              <form:input path="apellido2" class="form-control"/>
-                                            <form:errors path="apellido2" element="div" cssClass="alert alert-danger"/>
+                                            
                                             <p class="help-block"></p>
                                         </div>
                                         <div class="form-group">
                                             <label>Telefono</label>
                                              <form:input path="telefono" class="form-control"/>
-                                            <form:errors path="telefono" element="div" cssClass="alert alert-danger"/>
+                                            
                                             <p class="help-block"></p>
                                         </div>
                                         <div class="form-group">
                                             <label>Correo</label>
                                              <form:input path="correo" class="form-control"/>
-                                             <form:errors path="correo" element="div" cssClass="alert alert-danger"/>
                                             <p class="help-block"></p>
                                         </div>
+                                        
+                                   	    <div class="form-group">
+                                   	    <label>Responsables:</label>
+    	                                   		<form:select path="responsable" cssClass="form-control">
+    	                                   			<form:option value="${formulario.responsable}" label="${formulario.responsable.nombre}" />
+    	                                   			<form:options  var="listado" items="${listado}" itemValue="id" itemLabel="nombre" />	
+												</form:select>
+                                        </div>
+                                        
+                                        
                                         <c:if test="${formulario.repetidor==true}">
-                                        <c:set var="chequeado" value="checked">
+                                        <c:set var="chequeado" value="checked"> 
                                         </c:set> </c:if>
                                         <div class="form-group">
-                                        	<label><spring:message code="alumno.repetidor"/></label>
-                                             <form:checkbox path="repetidor"/>
-                                             <form:errors path="repetidor" element="div" cssClass="alert alert-danger"/>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <form:checkbox path="repetidor"/>
+                                                    Repetidor
+                                                </label>
+                                            </div>
                                         </div>
                                         
                                         <div class="form-group">
-                                            <label>Observaciones</label><br/>
+                                            <label>Observaciones:<br></label>
                                             <form:textarea path="observaciones" rows="3"/>
                                             
                                         </div>
@@ -97,3 +107,6 @@
             
             </div>
             
+            
+            
+      

@@ -29,9 +29,9 @@ public class PublicoController {
 		return "index";
 	}
 
-	@RequestMapping(value = "/admin/inicio.html", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin/index.html", method = RequestMethod.GET)
 	public String indexAdmin(ModelMap model) {
-		return "inicio2";
+		return "inicio";
 	}
 
 	@RequestMapping(value = "/admin/sinPermisos.html", method = RequestMethod.GET)

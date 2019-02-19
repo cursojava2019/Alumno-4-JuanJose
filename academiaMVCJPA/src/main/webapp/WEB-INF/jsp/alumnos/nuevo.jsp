@@ -6,7 +6,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 
-
+        
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">Nuevo Alumno</h1>
@@ -27,8 +27,7 @@
                                 
                                     	<form:form action="./nuevo.html" method="post" modelAttribute="alumno" >
                                     	<form:hidden path="id" />
-                                    	<spring:hasBindErrors name="*"> HAY ERRORRES QUE RESOLVER</spring:hasBindErrors>
-                                       
+                                       	<spring:hasBindErrors name="*"> HAY ERRORRES QUE RESOLVER</spring:hasBindErrors>
                                         <div class="form-group">
                                             <label>NIF</label>
                                            <form:input path="nif" class="form-control"/>
@@ -36,7 +35,7 @@
                                             <p class="help-block"></p>
                                         </div>
                                         <div class="form-group">
-                                             <label><spring:message code="alumno.nombre"/></label>
+                                            <label><spring:message code="alumno.nombre"/></label>
                                              <form:input path="nombre" class="form-control"/>
                                              <form:errors path="nombre" element="div" cssClass="alert alert-danger"/>
                                             <p class="help-block"></p>
@@ -66,18 +65,31 @@
                                             <p class="help-block"></p>
                                         </div>
                                         <c:if test="${formulario.repetidor==true}">
-                                        <c:set var="chequeado" value="checked">
+                                        <c:set var="chequeado" value="checked"> 
                                         </c:set> </c:if>
+                                        
+                                        <div class="form-group">
+                                   	    <label>Responsables:</label>
+    	                                   		<form:select path="responsable" cssClass="form-control">
+    	                                   			<form:option value="" label=""/>
+    	                                   			<form:options  var="listado" items="${listado}" itemValue="id" itemLabel="nombre" />	
+												</form:select>
+                                        </div>
+                                        
+                                      
+ 										
+                                     
                                         <div class="form-group">
                                             <div class="checkbox">
-                                                <label>Repetidor</label>
-                                                    <form:checkbox path="repetidor"/>
+                                                <label>
+                                                    <form:checkbox path="repetidor"/>Repetidor
                                                     <form:errors path="repetidor" element="div" cssClass="alert alert-danger"/>
+                                                </label>
                                             </div>
                                         </div>
                                         
                                         <div class="form-group">
-                                            <label>Observaciones</label><br/>
+                                            <label>Observaciones: </label><br>
                                             <form:textarea path="observaciones" rows="3"/>
                                             <form:errors path="observaciones" element="div" cssClass="alert alert-danger"/>
                                             
@@ -98,5 +110,12 @@
             
             </div>
             
-            
+          
+        <div class="panel-body">
+                          
+          
             </div>
+          
+            
+            
+       
