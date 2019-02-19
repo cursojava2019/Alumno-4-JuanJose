@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { routerTransition } from '../../router.animations';
+import { ResponsableService } from '../../shared/services/responsable.service';
+import { Responsable } from 'src/app/shared/entities/responsable';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-responsables',
@@ -9,9 +12,27 @@ import { routerTransition } from '../../router.animations';
 })
 export class ResponsablesComponent implements OnInit {
 
-  constructor() { }
+  responsables: Array<Responsable>;
+
+  constructor(responsableService: ResponsableService, private router: Router) {
+    responsableService.findAll().subscribe(data => {
+      this.responsables = data;
+    });
+  }
 
   ngOnInit() {
+  }
+
+  irCrearResponsable() {
+    this.router.navigate(['./responsables/crear']);
+  }
+
+  modificar(id: number) {
+    this.router.navigate(['./responsables/modificar']);
+  }
+
+  eliminar(id: number) {
+
   }
 
 }

@@ -8,11 +8,11 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class ProfesorService {
-	
-  url = 'http://192.168.1.19:8080/academiamvc/services/profesores/';
 
-  constructor(private http: HttpClient) { 
-  	
+  url = 'http://192.168.1.14:8080/academiajpa3/services/profesores/';
+
+  constructor(private http: HttpClient) {
+
   }
 
   findAll(): Observable<Profesor[]> {
@@ -33,7 +33,7 @@ export class ProfesorService {
   }
 
   modificar(p: Profesor): Observable<any> {
-    console.log(p); 
+    console.log(p);
     return this.http.put(this.url + p.id, p);
   }
 }

@@ -8,7 +8,6 @@ export class Profesor {
 	    public correo: string,
 	    public nif: string,
 	    public titulacion: string,
-	    public telefono: string){
-
+	    public telefono: string) {
 	}
 }
