@@ -14,7 +14,7 @@ export class ProfesoresComponent implements OnInit {
 
 	profesores: Array<Profesor>;
 
-  constructor(profesorService: ProfesorService, private router: Router) {
+  constructor(private profesorService: ProfesorService, private router: Router) {
   	profesorService.findAll().subscribe(data => {
       this.profesores = data;
     });
@@ -35,10 +35,10 @@ export class ProfesoresComponent implements OnInit {
     if (confirm('¿Está seguro que desea borrar el profesor?')) {
       this.profesorService.delete(id).subscribe(data => {
         this.profesorService.findAll().subscribe(data => {
-          this.profesor = data;
+          this.profesores = data;
         });
       });
+    }
   }
-
 
 }

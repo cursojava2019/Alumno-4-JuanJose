@@ -6048,3 +6048,59 @@ INFO  | 2019-02-19 18:55:13 | AlumnoService [http-nio-8080-exec-7] (support.Serv
 INFO  | 2019-02-19 18:55:13 | AlumnoService [http-nio-8080-exec-7] (support.Service:53) - Obtener todos
 INFO  | 2019-02-19 18:56:13 | AlumnoService [http-nio-8080-exec-8] (support.Service:53) - Obtener todos
 INFO  | 2019-02-19 18:56:13 | AlumnoService [http-nio-8080-exec-8] (support.Service:53) - Obtener todos
+INFO  | 2019-02-20 16:42:37 | LogHelper [localhost-startStop-1] (util.LogHelper:31) - HHH000204: Processing PersistenceUnitInfo [
+	name: JPAUnit
+	...]
+INFO  | 2019-02-20 16:42:43 | Version [localhost-startStop-1] (hibernate.Version:37) - HHH000412: Hibernate Core {5.1.0.Final}
+INFO  | 2019-02-20 16:42:43 | Environment [localhost-startStop-1] (cfg.Environment:213) - HHH000206: hibernate.properties not found
+INFO  | 2019-02-20 16:42:43 | Environment [localhost-startStop-1] (cfg.Environment:317) - HHH000021: Bytecode provider name : javassist
+INFO  | 2019-02-20 16:42:46 | Version [localhost-startStop-1] (java.JavaReflectionManager:66) - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+INFO  | 2019-02-20 16:44:50 | LogHelper [localhost-startStop-1] (util.LogHelper:31) - HHH000204: Processing PersistenceUnitInfo [
+	name: JPAUnit
+	...]
+INFO  | 2019-02-20 16:44:50 | Version [localhost-startStop-1] (hibernate.Version:37) - HHH000412: Hibernate Core {5.1.0.Final}
+INFO  | 2019-02-20 16:44:50 | Environment [localhost-startStop-1] (cfg.Environment:213) - HHH000206: hibernate.properties not found
+INFO  | 2019-02-20 16:44:50 | Environment [localhost-startStop-1] (cfg.Environment:317) - HHH000021: Bytecode provider name : javassist
+INFO  | 2019-02-20 16:44:50 | Version [localhost-startStop-1] (java.JavaReflectionManager:66) - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+INFO  | 2019-02-20 16:44:51 | Dialect [localhost-startStop-1] (dialect.Dialect:156) - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+INFO  | 2019-02-20 16:44:52 | LobCreatorBuilderImpl [localhost-startStop-1] (internal.LobCreatorBuilderImpl:124) - HHH000424: Disabling contextual LOB creation as createClob() method threw error : java.lang.reflect.InvocationTargetException
+INFO  | 2019-02-20 16:44:52 | BasicTypeRegistry [localhost-startStop-1] (type.BasicTypeRegistry:138) - HHH000270: Type registration [java.util.UUID] overrides previous : org.hibernate.type.UUIDBinaryType@271f72df
+INFO  | 2019-02-20 16:45:33 | LogHelper [localhost-startStop-1] (util.LogHelper:31) - HHH000204: Processing PersistenceUnitInfo [
+	name: JPAUnit
+	...]
+INFO  | 2019-02-20 16:45:34 | Version [localhost-startStop-1] (hibernate.Version:37) - HHH000412: Hibernate Core {5.1.0.Final}
+INFO  | 2019-02-20 16:45:34 | Environment [localhost-startStop-1] (cfg.Environment:213) - HHH000206: hibernate.properties not found
+INFO  | 2019-02-20 16:45:34 | Environment [localhost-startStop-1] (cfg.Environment:317) - HHH000021: Bytecode provider name : javassist
+INFO  | 2019-02-20 16:45:34 | Version [localhost-startStop-1] (java.JavaReflectionManager:66) - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+INFO  | 2019-02-20 16:45:35 | Dialect [localhost-startStop-1] (dialect.Dialect:156) - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+INFO  | 2019-02-20 16:45:35 | LobCreatorBuilderImpl [localhost-startStop-1] (internal.LobCreatorBuilderImpl:124) - HHH000424: Disabling contextual LOB creation as createClob() method threw error : java.lang.reflect.InvocationTargetException
+INFO  | 2019-02-20 16:45:35 | BasicTypeRegistry [localhost-startStop-1] (type.BasicTypeRegistry:138) - HHH000270: Type registration [java.util.UUID] overrides previous : org.hibernate.type.UUIDBinaryType@6fc50115
+INFO  | 2019-02-20 16:45:37 | Version [localhost-startStop-1] (util.Version:21) - HV000001: Hibernate Validator 6.0.2.Final
+INFO  | 2019-02-20 16:45:40 | QueryTranslatorFactoryInitiator [localhost-startStop-1] (internal.QueryTranslatorFactoryInitiator:47) - HHH000397: Using ASTQueryTranslatorFactory
+INFO  | 2019-02-20 16:45:44 | LogHelper [localhost-startStop-1] (util.LogHelper:31) - HHH000204: Processing PersistenceUnitInfo [
+	name: JPAUnit
+	...]
+INFO  | 2019-02-20 16:45:44 | Dialect [localhost-startStop-1] (dialect.Dialect:156) - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+INFO  | 2019-02-20 16:45:44 | LobCreatorBuilderImpl [localhost-startStop-1] (internal.LobCreatorBuilderImpl:124) - HHH000424: Disabling contextual LOB creation as createClob() method threw error : java.lang.reflect.InvocationTargetException
+INFO  | 2019-02-20 16:45:44 | BasicTypeRegistry [localhost-startStop-1] (type.BasicTypeRegistry:138) - HHH000270: Type registration [java.util.UUID] overrides previous : org.hibernate.type.UUIDBinaryType@6fc50115
+INFO  | 2019-02-20 16:45:44 | QueryTranslatorFactoryInitiator [localhost-startStop-1] (internal.QueryTranslatorFactoryInitiator:47) - HHH000397: Using ASTQueryTranslatorFactory
+WARN  | 2019-02-20 16:45:44 | EntityManagerFactoryRegistry [localhost-startStop-1] (internal.EntityManagerFactoryRegistry:63) - HHH000436: Entity manager factory name (JPAUnit) is already registered.  If entity manager will be clustered or passivated, specify a unique value for property 'hibernate.ejb.entitymanager_factory_name'
+INFO  | 2019-02-20 16:47:17 | AlumnoController [http-nio-8080-exec-7] (alumnos.AlumnoController:58) - listado Alumnos
+INFO  | 2019-02-20 16:47:17 | AlumnoController [http-nio-8080-exec-7] (alumnos.AlumnoController:58) - listado Alumnos
+INFO  | 2019-02-20 16:47:19 | ProfesorController [http-nio-8080-exec-8] (profesores.ProfesorController:42) - listado Profesor
+INFO  | 2019-02-20 16:47:19 | ProfesorController [http-nio-8080-exec-8] (profesores.ProfesorController:42) - listado Profesor
+INFO  | 2019-02-20 16:47:20 | ResponsableController [http-nio-8080-exec-6] (responsable.ResponsableController:50) - listado Responsable
+INFO  | 2019-02-20 16:47:20 | ResponsableController [http-nio-8080-exec-6] (responsable.ResponsableController:50) - listado Responsable
+INFO  | 2019-02-20 16:47:21 | ProfesorController [http-nio-8080-exec-9] (profesores.ProfesorController:42) - listado Profesor
+INFO  | 2019-02-20 16:47:21 | ProfesorController [http-nio-8080-exec-9] (profesores.ProfesorController:42) - listado Profesor
+INFO  | 2019-02-20 16:47:22 | AlumnoController [http-nio-8080-exec-3] (alumnos.AlumnoController:58) - listado Alumnos
+INFO  | 2019-02-20 16:47:22 | AlumnoController [http-nio-8080-exec-3] (alumnos.AlumnoController:58) - listado Alumnos
+INFO  | 2019-02-20 16:47:49 | AlumnoController [http-nio-8080-exec-10] (alumnos.AlumnoController:58) - listado Alumnos
+INFO  | 2019-02-20 16:47:49 | AlumnoController [http-nio-8080-exec-10] (alumnos.AlumnoController:58) - listado Alumnos
+WARN  | 2019-02-20 16:48:06 | SqlExceptionHelper [http-nio-8080-exec-7] (spi.SqlExceptionHelper:129) - SQL Error: 0, SQLState: 22001
+ERROR | 2019-02-20 16:48:06 | SqlExceptionHelper [http-nio-8080-exec-7] (spi.SqlExceptionHelper:131) - ERROR: el valor es demasiado largo para el tipo character varying(9)
+INFO  | 2019-02-20 16:48:06 | AbstractBatchImpl [http-nio-8080-exec-7] (internal.AbstractBatchImpl:193) - HHH000010: On release of batch it still contained JDBC statements
+INFO  | 2019-02-20 16:48:22 | ResponsableController [http-nio-8080-exec-9] (responsable.ResponsableController:50) - listado Responsable
+INFO  | 2019-02-20 16:48:22 | ResponsableController [http-nio-8080-exec-9] (responsable.ResponsableController:50) - listado Responsable
+INFO  | 2019-02-20 16:48:24 | ResponsableController [http-nio-8080-exec-3] (responsable.ResponsableController:50) - listado Responsable
+INFO  | 2019-02-20 16:48:24 | ResponsableController [http-nio-8080-exec-3] (responsable.ResponsableController:50) - listado Responsable

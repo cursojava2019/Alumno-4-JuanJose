@@ -14,7 +14,7 @@ export class ResponsablesComponent implements OnInit {
 
   responsables: Array<Responsable>;
 
-  constructor(responsableService: ResponsableService, private router: Router) {
+  constructor(private responsableService: ResponsableService, private router: Router) {
     responsableService.findAll().subscribe(data => {
       this.responsables = data;
     });

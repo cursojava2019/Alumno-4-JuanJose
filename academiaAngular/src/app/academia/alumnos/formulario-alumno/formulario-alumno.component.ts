@@ -1,6 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Alumno } from 'src/app/shared/entities/alumno';
+import { ResponsableService } from 'src/app/shared/services/responsable.service';
+import { Responsable } from 'src/app/shared/entities/responsable';
 
 
 @Component({
@@ -10,6 +12,8 @@ import { Alumno } from 'src/app/shared/entities/alumno';
 })
 export class FormularioAlumnoComponent implements OnInit {
   miFormulario: FormGroup;
+
+  listadoResponsables: Array<Responsable>;
 
   @Input()
   modificar = false;
@@ -21,7 +25,7 @@ export class FormularioAlumnoComponent implements OnInit {
   modificado = new EventEmitter<Alumno>();
 
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private responsableService: ResponsableService) {}
 
   ngOnInit() {
     this.miFormulario = this.fb.group({
@@ -33,12 +37,18 @@ export class FormularioAlumnoComponent implements OnInit {
       telefono : this.fb.control('', [Validators.required]),
       correo : this.fb.control('', [Validators.required, Validators.email]),
       repetidor : this.fb.control(false, []),
+      idResponsable : this.fb.control(''),
       observaciones : this.fb.control('', [Validators.maxLength(1000)]),
-      fechaAlta : this.fb.control('', []),
+      fechaAlta : this.fb.control('', [])
+
+    });
+
+    this.responsableService.findAll().subscribe(data => {
+      this.listadoResponsables = data;
     });
 
     if (this.modificar === true) {
-      console.log('patch '+ this.alumnoModificar);
+      console.log('patch ' + this.alumnoModificar);
       this.miFormulario.patchValue (this.alumnoModificar);
     }
   }

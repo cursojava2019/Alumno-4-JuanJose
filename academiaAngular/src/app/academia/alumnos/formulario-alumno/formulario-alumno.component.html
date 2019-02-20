@@ -72,13 +72,23 @@
 
         </div>
 
+
+
+      <div class="form-group">
+        <label class="form-control-label" for="idResponsable">Responsable</label>
+        <select formControlName="idResponsable">
+
+          <option *ngFor="let opt of listadoResponsables" [value]="opt.id" [selected]="alumnoModificar?.idResponsable==opt.id">{{opt.nombre}} {{opt.apellido1}} {{opt.apellido2}}</option>
+        </select>
+
+    </div>
+
         <div class="form-group">
             <label class="form-control-label" for="observaciones">Observaciones</label>
             <textarea class="form-control" placeholder="Introduzca el observaciones electrónico" formControlName="observaciones" [ngClass]="{'is-invalid': miFormulario.get('observaciones').dirty && !miFormulario.get('observaciones').valid}"></textarea>
               <div *ngIf="miFormulario.get('observaciones').dirty && miFormulario.get('observaciones').errors"  class="alert alert-danger">
                   <p *ngIf="miFormulario.get('observaciones').hasError('maxlength')">Tamaño máximo de 1000 caracteres</p>
              </div>
-
         </div>
 
     </fieldset>

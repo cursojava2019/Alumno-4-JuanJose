@@ -3,6 +3,7 @@ import { routerTransition } from '../../router.animations';
 import { AlumnoService } from '../../shared/services/alumno.service';
 import { Alumno } from 'src/app/shared/entities/alumno';
 import { Router } from '@angular/router';
+import { ResponsableService } from 'src/app/shared/services/responsable.service';
 
 
 @Component({
@@ -15,9 +16,23 @@ export class AlumnosComponent implements OnInit {
 
   alumnos: Array<Alumno>;
 
-  constructor(private alumnoService: AlumnoService, private router: Router) {
+  constructor(private alumnoService: AlumnoService, private responsableService: ResponsableService , private router: Router) {
     alumnoService.findAll().subscribe(data => {
+
+
+      console.log(data);
+      for (const i of  data) {
+        if (i['responsableAlumno'] != null) {
+        this.responsableService.findById(i['responsableAlumno']).subscribe(respo => {
+          i.responsable = respo;
+          console.log(respo);
+          i.idResponsable = i['responsableAlumno'];
+        });
+
+      }
+    }
       this.alumnos = data;
+      console.log(data);
     });
   }
 

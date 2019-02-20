@@ -8,8 +8,8 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class AlumnoService {
-  
-  url = 'http://localhost:8080/academiamvc/services/alumnos/';
+
+  url = 'http://192.168.1.14:8080/academiajpa3/services/alumnos/';
 
   constructor(private http: HttpClient) {
 
