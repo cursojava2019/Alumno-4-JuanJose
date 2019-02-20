@@ -18,7 +18,7 @@ export class ModificarProfesorComponent implements OnInit {
   constructor(private rutaActiva: ActivatedRoute, private profesorService: ProfesorService, private router: Router) { }
 
   ngOnInit() {
-  	const id = this.rutaActiva.snapshot.params.idProfesor;
+  	let id = this.rutaActiva.snapshot.params.idProfesor;
     this.profesorService.findById(id).subscribe(data => {
       this.profesorActual = data;
       console.log(this.profesorActual);

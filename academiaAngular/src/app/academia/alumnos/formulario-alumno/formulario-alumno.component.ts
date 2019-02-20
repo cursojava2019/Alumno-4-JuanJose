@@ -32,12 +32,13 @@ export class FormularioAlumnoComponent implements OnInit {
       nif : this.fb.control('', [Validators.required, Validators.minLength(9), Validators.maxLength(9)]),
       telefono : this.fb.control('', [Validators.required]),
       correo : this.fb.control('', [Validators.required, Validators.email]),
-      repetidor : this.fb.control('', []),
+      repetidor : this.fb.control(false, []),
       observaciones : this.fb.control('', [Validators.maxLength(1000)]),
       fechaAlta : this.fb.control('', []),
     });
 
     if (this.modificar === true) {
+      console.log('patch '+ this.alumnoModificar);
       this.miFormulario.patchValue (this.alumnoModificar);
     }
   }

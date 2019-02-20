@@ -9,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ProfesorService {
 
-  url = 'http://192.168.1.14:8080/academiajpa3/services/profesores/';
+  url = 'http://localhost:8080/academiamvc/services/profesores/';
 
   constructor(private http: HttpClient) {
 
@@ -29,7 +29,7 @@ export class ProfesorService {
   }
 
   delete(id: number): Observable<any> {
-    return this.http.delete(this.url + 1);
+    return this.http.delete(this.url + id);
   }
 
   modificar(p: Profesor): Observable<any> {

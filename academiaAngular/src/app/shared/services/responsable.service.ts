@@ -9,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ResponsableService {
 
-  url = 'http://192.168.1.14:8080/academiajpa3/services/responsables/';
+  url = 'http://localhost:8080/academiamvc/services/responsables/';
 
   constructor(private http: HttpClient) {
 

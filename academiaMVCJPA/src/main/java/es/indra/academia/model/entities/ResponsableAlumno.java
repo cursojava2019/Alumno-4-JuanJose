@@ -2,6 +2,9 @@ package es.indra.academia.model.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.util.List;
 
 
@@ -12,6 +15,7 @@ import java.util.List;
 @Entity
 @Table(name="responsable_alumno")
 @NamedQuery(name="ResponsableAlumno.findAll", query="SELECT r FROM ResponsableAlumno r")
+@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 public class ResponsableAlumno implements Serializable {
 	private static final long serialVersionUID = 1L;
 

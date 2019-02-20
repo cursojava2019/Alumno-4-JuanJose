@@ -35,6 +35,7 @@ export class FormularioProfesorComponent implements OnInit {
     });
 
     if (this.modificar === true) {
+      console.log('patch '+ this.profesorModificar);
       this.miFormulario.patchValue (this.profesorModificar);
     }
   }

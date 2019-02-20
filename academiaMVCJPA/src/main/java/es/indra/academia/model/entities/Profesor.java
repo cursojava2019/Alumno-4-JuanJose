@@ -4,6 +4,11 @@ import java.io.Serializable;
 import javax.persistence.*;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 
 /**
  * The persistent class for the profesor database table.
@@ -12,6 +17,7 @@ import java.util.List;
 @Entity
 @Table(name="profesor")
 @NamedQuery(name="Profesor.findAll", query="SELECT p FROM Profesor p")
+@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 public class Profesor implements Serializable {
 	private static final long serialVersionUID = 1L;
 

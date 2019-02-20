@@ -17,7 +17,7 @@ export class ModificarAlumnoComponent implements OnInit {
   constructor(private rutaActiva: ActivatedRoute, private alumnoService: AlumnoService, private router: Router) { }
 
   ngOnInit() {
-    const id = this.rutaActiva.snapshot.params.idAlumno;
+    let id = this.rutaActiva.snapshot.params.idAlumno;
     this.alumnoService.findById(id).subscribe(data => {
       this.alumnoActual = data;
       console.log(this.alumnoActual);

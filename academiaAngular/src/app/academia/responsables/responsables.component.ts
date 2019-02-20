@@ -32,7 +32,14 @@ export class ResponsablesComponent implements OnInit {
   }
 
   eliminar(id: number) {
+    if (confirm('¿Está seguro que desea borrar el responsable?')) {
+      this.responsableService.delete(id).subscribe(data => {
+        this.responsableService.findAll().subscribe(data => {
+          this.responsables = data;
+        });
+      });
 
+    }
   }
 
 }

@@ -14,7 +14,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     ResponsablesRoutingModule,
-    PageHeaderModule
+    PageHeaderModule,
+    ReactiveFormsModule
   ]
 })
 export class ResponsablesModule { }
